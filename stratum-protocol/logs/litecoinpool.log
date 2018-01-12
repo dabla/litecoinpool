@@ -1,0 +1,365 @@
+[12/01/2018 13:23:18:018 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:23:18:018 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:24:07:007 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:24:07:007 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:25:53:053 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:25:53:053 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:29:18:018 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:29:18:018 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:29:19:019 CET] StratumChain  INFO StratumChain: sentinel on queue, exiting
+[12/01/2018 13:29:38:038 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:29:38:038 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:29:38:038 CET] StratumChain  INFO StratumChain: sentinel on queue, exiting
+[12/01/2018 13:30:03:003 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:30:03:003 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:30:04:004 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:04:004 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:04:004 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:04:004 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:30:07:007 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:07:007 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:07:007 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:07:007 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:30:11:011 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:11:011 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:11:011 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:11:011 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:30:17:017 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:17:017 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:17:017 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:17:017 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:30:21:021 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:21:021 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:21:021 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:21:021 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:30:28:028 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:28:028 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:28:028 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:28:028 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:30:31:031 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:31:031 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:31:031 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:31:031 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:30:35:035 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:35:035 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:35:035 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:35:035 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:30:40:040 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:40:040 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:40:040 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:40:040 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:30:47:047 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:47:047 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:47:047 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:47:047 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:30:48:048 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:30:48:048 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:30:48:048 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:48:048 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:53:053 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:53:053 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:53:053 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:53:053 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:30:56:056 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:30:56:056 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:30:56:056 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:30:56:056 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:31:01:001 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:31:01:001 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:31:01:001 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:31:01:001 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:31:07:007 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:31:07:007 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:31:07:007 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:31:07:007 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:32:09:009 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:32:09:009 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:32:09:009 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:32:09:009 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:32:48:048 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.SocketException: Malformed reply from SOCKS server
+	at java.net.SocksSocketImpl.readSocksReply(SocksSocketImpl.java:129)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:459)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:32:48:048 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:32:52:052 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:32:52:052 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:34:09:009 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.SocketException: Malformed reply from SOCKS server
+	at java.net.SocksSocketImpl.readSocksReply(SocksSocketImpl.java:129)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:459)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:34:09:009 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:34:39:039 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:34:39:039 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:34:39:039 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:34:39:039 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:34:39:039 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org:3333
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:447)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:34:39:039 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:34:50:050 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:34:50:050 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:34:50:050 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:34:50:050 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:34:50:050 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org:3333
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:447)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:34:50:050 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:34:54:054 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:34:54:054 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:34:54:054 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org:3333
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:447)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:34:54:054 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:35:14:014 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:35:14:014 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:35:15:015 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:35:15:015 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:35:23:023 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:35:23:023 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:35:23:023 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:35:23:023 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:37:23:023 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.SocketException: Malformed reply from SOCKS server
+	at java.net.SocksSocketImpl.readSocksReply(SocksSocketImpl.java:129)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:459)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:37:23:023 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:37:30:030 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:37:30:030 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:45:22:022 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:45:22:022 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:45:22:022 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:45:22:022 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:45:22:022 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org:3333
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:447)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:243)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:254)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:384)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:45:22:022 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:45:39:039 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:45:39:039 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:45:39:039 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:45:39:039 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 13:45:39:039 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org:3333
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:447)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:243)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:254)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:384)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 13:45:39:039 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 13:45:58:058 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 13:45:58:058 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 13:45:59:059 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 13:45:59:059 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333

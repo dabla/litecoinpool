@@ -1,0 +1,260 @@
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: block 11 @Thu Jan 01 01:01:40 CET 1970, ours 10
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: block 1 @Thu Jan 01 01:01:40 CET 1970, ours 0
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: block 2 @Thu Jan 01 01:01:40 CET 1970, ours 1
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: block 1 @Thu Jan 01 01:01:40 CET 1970, ours 0
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: block 2 @Thu Jan 01 01:01:40 CET 1970, ours 1
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: block 2 @Thu Jan 01 01:01:40 CET 1970, ours 2
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: block 2 @Thu Jan 01 01:01:40 CET 1970, ours 2
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: block 1 @Thu Jan 01 01:01:40 CET 1970, ours 2
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: block 2 @Thu Jan 01 01:01:40 CET 1970, ours 1
+[12/01/2018 12:14:05:005 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:19:17:017 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 260ms
+[12/01/2018 12:19:17:017 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@41fecb8b
+[12/01/2018 12:19:17:017 CET] main  WARN org.bitcoinj.core.Context: Implicitly creating context. This is a migration step and this message will eventually go away.
+[12/01/2018 12:19:17:017 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:17:017 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 4 msec
+[12/01/2018 12:19:17:017 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:17:017 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 3 msec
+[12/01/2018 12:19:17:017 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 29ms
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@28dcca0c
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 4 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 3 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending e99c61b6ae13fc065e05c52f1afecc9fa6b548be5df1c58530340b669988ded2
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx e99c61b6ae13fc065e05c52f1afecc9fa6b548be5df1c58530340b669988ded2
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: unconfirmed e99c61b6ae13fc065e05c52f1afecc9fa6b548be5df1c58530340b669988ded2
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Marking key as used: [FAILED toString()]
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 7e1a07ef90a323817fa68deec15a1ad9eab9722c2aacc8df237eb29bafc8284e
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 7e1a07ef90a323817fa68deec15a1ad9eab9722c2aacc8df237eb29bafc8284e
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: unconfirmed 7e1a07ef90a323817fa68deec15a1ad9eab9722c2aacc8df237eb29bafc8284e
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Marking key as used: [FAILED toString()]
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 23ms
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@6f43c82
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 3 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got history of length 1 for mq4xoKD4KBfDxu65CaUHZHPGJAYrCRkTFf
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: have block for 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 5 keys needed for M/0H/0 = 1 issued + 10 lookahead size + 0 lookahead threshold - 6 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 5 keys needed for M/0H/1 = 1 issued + 10 lookahead size + 0 lookahead threshold - 6 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 3 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.store.WalletProtobufSerializer: Loading wallet extension org.smartcolors.electrum
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 30ms
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@67b9b51a
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 7 keys needed for M/0H/0 = 0 issued + 10 lookahead size + 3 lookahead threshold - 6 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 3 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 7 keys needed for M/0H/1 = 0 issued + 10 lookahead size + 3 lookahead threshold - 6 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 21ms
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@31920ade
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got history of length 1 for mrPtopAVx6sknFf1rkaH7ZzNJk5CPDj2Pa
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: unconfirmed 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got history of length 1 for mrPtopAVx6sknFf1rkaH7ZzNJk5CPDj2Pa
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: have block for 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 29ms
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@55cf0d14
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 0d81709f40f3557502d1c3c83cebfdcefde90bf95e4b73de5f01b7409ee17e40
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 0d81709f40f3557502d1c3c83cebfdcefde90bf95e4b73de5f01b7409ee17e40
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: unconfirmed 0d81709f40f3557502d1c3c83cebfdcefde90bf95e4b73de5f01b7409ee17e40
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 9 keys needed for M/0H/0 = 2 issued + 10 lookahead size + 3 lookahead threshold - 6 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 8 keys needed for M/0H/1 = 1 issued + 10 lookahead size + 3 lookahead threshold - 6 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 72b0b0c2b7134cfa2f5218a6768e80041a3669dabbaf168addc0a1b916c0d4a7
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 72b0b0c2b7134cfa2f5218a6768e80041a3669dabbaf168addc0a1b916c0d4a7
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: unconfirmed 72b0b0c2b7134cfa2f5218a6768e80041a3669dabbaf168addc0a1b916c0d4a7
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Marking key as used: [FAILED toString()]
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 22ms
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@563e4951
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got history of length 1 for mioRLqfLHUxZ3kQ4obThoEUECBKdio3t9q
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: have block for 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 21ms
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@6cdba6dc
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:19:18:018 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:19:18:018 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:19:18:018 CET] main ERROR org.smartwallet.multi.ElectrumMultiWallet: got address subscription update with no params
+[12/01/2018 12:20:27:027 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 12:20:27:027 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 12:39:39:039 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 12:39:39:039 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 228ms
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@5a56cdac
+[12/01/2018 12:39:40:040 CET] main  WARN org.bitcoinj.core.Context: Implicitly creating context. This is a migration step and this message will eventually go away.
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 5 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 3 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 24ms
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@1c9b0314
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 3 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending ec6009cf5e9f28b12bc16f1199f723ac198b2fa92448aaf3985f3a84ceee650e
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx ec6009cf5e9f28b12bc16f1199f723ac198b2fa92448aaf3985f3a84ceee650e
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: unconfirmed ec6009cf5e9f28b12bc16f1199f723ac198b2fa92448aaf3985f3a84ceee650e
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Marking key as used: [FAILED toString()]
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending b0f606d2a8c381bbbeea77b08334f2ca122f40d85a5266b1807b8a52f3be8f21
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx b0f606d2a8c381bbbeea77b08334f2ca122f40d85a5266b1807b8a52f3be8f21
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: unconfirmed b0f606d2a8c381bbbeea77b08334f2ca122f40d85a5266b1807b8a52f3be8f21
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Marking key as used: [FAILED toString()]
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 22ms
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@222a59e6
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got history of length 1 for n3otSoRgHBz4DZPKyv1ENYiXEHPWkzPwKj
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: have block for 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 5 keys needed for M/0H/0 = 1 issued + 10 lookahead size + 0 lookahead threshold - 6 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 5 keys needed for M/0H/1 = 1 issued + 10 lookahead size + 0 lookahead threshold - 6 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.store.WalletProtobufSerializer: Loading wallet extension org.smartcolors.electrum
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 22ms
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@45a37759
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 7 keys needed for M/0H/0 = 0 issued + 10 lookahead size + 3 lookahead threshold - 6 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 3 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 7 keys needed for M/0H/1 = 0 issued + 10 lookahead size + 3 lookahead threshold - 6 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 21ms
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@6c2ed0cd
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got history of length 1 for mqUALkFfxBaXze3eURYTXqHACwxAyYzquA
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: unconfirmed 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got history of length 1 for mqUALkFfxBaXze3eURYTXqHACwxAyYzquA
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: have block for 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 20ms
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@4241e0f4
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 7e4ea073ba5a4313d357acc35392ee3b3b00b9b99f4e714f3b60430e5c0c8fd9
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 7e4ea073ba5a4313d357acc35392ee3b3b00b9b99f4e714f3b60430e5c0c8fd9
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: unconfirmed 7e4ea073ba5a4313d357acc35392ee3b3b00b9b99f4e714f3b60430e5c0c8fd9
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 9 keys needed for M/0H/0 = 2 issued + 10 lookahead size + 3 lookahead threshold - 6 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 8 keys needed for M/0H/1 = 1 issued + 10 lookahead size + 3 lookahead threshold - 6 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 2 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 04a731e86b49087ab8aa6214bc59786d565dad8d487dcb3a9df3bc6c2250383e
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 04a731e86b49087ab8aa6214bc59786d565dad8d487dcb3a9df3bc6c2250383e
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: unconfirmed 04a731e86b49087ab8aa6214bc59786d565dad8d487dcb3a9df3bc6c2250383e
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Marking key as used: [FAILED toString()]
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 21ms
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@1e44b638
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got history of length 1 for mxDwe9pgmBHfFSgX3Roj8sk31EWosNca8B
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: pending 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: got tx 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: have block for 561534ec392fa8eebf5779b233232f7f7df5fd5179c3c640d84378ee6274686b
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.crypto.MnemonicCode: PBKDF2 took 20ms
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.KeyChainGroup: Creating and activating a new HD chain: org.bitcoinj.wallet.DeterministicKeyChain@600b9d27
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/0 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: 6 keys needed for M/0H/1 = 0 issued + 5 lookahead size + 1 lookahead threshold - 0 num children
+[12/01/2018 12:39:40:040 CET] main  INFO org.bitcoinj.wallet.DeterministicKeyChain: Took 1 msec
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.multi.ElectrumMultiWallet: created
+[12/01/2018 12:39:40:040 CET] main ERROR org.smartwallet.multi.ElectrumMultiWallet: got address subscription update with no params
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: block 11 @Thu Jan 01 01:01:40 CET 1970, ours 10
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: block 1 @Thu Jan 01 01:01:40 CET 1970, ours 0
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: block 2 @Thu Jan 01 01:01:40 CET 1970, ours 1
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: block 1 @Thu Jan 01 01:01:40 CET 1970, ours 0
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: block 2 @Thu Jan 01 01:01:40 CET 1970, ours 1
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: block 2 @Thu Jan 01 01:01:40 CET 1970, ours 2
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: block 2 @Thu Jan 01 01:01:40 CET 1970, ours 2
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: block 1 @Thu Jan 01 01:01:40 CET 1970, ours 2
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: block 2 @Thu Jan 01 01:01:40 CET 1970, ours 1
+[12/01/2018 12:39:40:040 CET] main  INFO StratumChain: Synced
+[12/01/2018 12:39:40:040 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 12:39:40:040 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 12:39:40:040 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:269)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:280)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:410)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 12:39:40:040 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
+[12/01/2018 12:39:40:040 CET] main  INFO org.smartwallet.stratum.StratumClient: trigger shutdown

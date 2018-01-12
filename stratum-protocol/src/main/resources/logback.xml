@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <jmxConfigurator/>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- do NOT check this in with a threshold lower than ERROR -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>[%d{dd/MM/yyyy HH:mm:ss:sss z}] %t %5p %c: %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/litecoinpool.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/litecoinpool.log.%d{yyyyMMddHH}</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{dd/MM/yyyy HH:mm:ss:sss z}] %t %5p %c: %m%n</pattern>
+        </encoder>
+    </appender>
+    
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

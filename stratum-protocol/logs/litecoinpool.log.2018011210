@@ -1,0 +1,46 @@
+[12/01/2018 10:32:54:054 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 10:32:54:054 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 10:33:49:049 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 10:33:49:049 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 10:34:05:005 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 10:34:05:005 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 10:34:31:031 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 10:34:31:031 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 10:35:05:005 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 10:35:05:005 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 10:35:12:012 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 10:35:12:012 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 10:35:27:027 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 10:35:27:027 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 10:35:27:027 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 10:35:27:027 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: client
+java.lang.UnsupportedOperationException: null
+	at java.util.AbstractList.remove(AbstractList.java:161)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:242)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:258)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:388)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 10:35:27:027 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: shutdown
+[12/01/2018 10:35:27:027 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: stop pinger
+[12/01/2018 10:35:27:027 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: stopped pinger
+[12/01/2018 10:36:08:008 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 10:36:08:008 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 10:36:17:017 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[12/01/2018 10:36:17:017 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[12/01/2018 10:36:18:018 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: connect
+[12/01/2018 10:36:18:018 CET] StratumClient  INFO org.smartwallet.stratum.StratumClient: Opening a socket to litecoinpool.org:3333
+[12/01/2018 10:36:18:018 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: IOException
+java.net.UnknownHostException: litecoinpool.org
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at org.smartwallet.stratum.StratumClient.connectSocket(StratumClient.java:248)
+	at org.smartwallet.stratum.StratumClient.connect(StratumClient.java:259)
+	at org.smartwallet.stratum.StratumClient.run(StratumClient.java:389)
+	at com.google.common.util.concurrent.AbstractExecutionThreadService$1$2.run(AbstractExecutionThreadService.java:66)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+[12/01/2018 10:36:18:018 CET] StratumClient ERROR org.smartwallet.stratum.StratumClient: will reconnect
