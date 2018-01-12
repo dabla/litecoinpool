@@ -16,6 +16,7 @@ import javax.net.ssl.X509TrustManager;
 
 public class SocketFactory {
 	public Socket create(boolean isTLS) throws IOException {
+		
 		if (isTLS) {
             try {
                 SSLContext sc = getInstance("TLS");
@@ -28,7 +29,6 @@ public class SocketFactory {
         }
 		
         return new Socket();
-        
 	}
 
 	static class TrustAllX509TrustManager implements X509TrustManager {

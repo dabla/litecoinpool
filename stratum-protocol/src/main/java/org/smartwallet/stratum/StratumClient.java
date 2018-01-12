@@ -15,11 +15,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -36,9 +32,6 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.concurrent.GuardedBy;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.NetworkParameters;
@@ -584,7 +577,7 @@ public class StratumClient extends AbstractExecutionThreadService {
     }
 
     private StratumMessage makeMessage(String method, String param, long id) {
-        ArrayList<Object> params = (param != null) ? Lists.<Object>newArrayList(param) : Lists.newArrayList();
+        List<Object> params = (param != null) ? Collections.<Object>singletonList(param) : Collections.<Object>emptyList();
         return aStratumMessage().withId(id)
         						.withMethod(method)
         						.withParams(params)

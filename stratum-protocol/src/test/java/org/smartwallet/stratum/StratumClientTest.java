@@ -29,7 +29,7 @@ public class StratumClientTest extends AbstractTest {
 			}
 		});
 		
-		client.subscribeToHeaders();
+		client.subscribe("mining.subscribe", null, 1L);
 		
 		aPoller().doAssert(new Assertion() {
 			@Override
