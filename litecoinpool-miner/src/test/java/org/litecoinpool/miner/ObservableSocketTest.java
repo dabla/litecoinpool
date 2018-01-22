@@ -1,39 +1,63 @@
 package org.litecoinpool.miner;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.fest.reflect.core.Reflection.staticField;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.mockingDetails;
 import static org.mockito.Mockito.when;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.net.Socket;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
+import org.smartwallet.stratum.StratumMessage;
 
 public class ObservableSocketTest extends AbstractTest {
 	@Mock
 	private Socket socket;
 	@Mock
+	private BufferedReaderFactory bufferedReaderFactory;
+	@Mock
 	private InputStream inputStream;
+	@Mock
+	private BufferedReader bufferedReader;
 	
 	@Before
 	public void setUp() throws Exception {
+		setFinalStatic(staticField("READER_FACTORY").ofType(BufferedReaderFactory.class).in(ObservableSocket.class).info(), bufferedReaderFactory);
 		when(socket.getInputStream()).thenReturn(inputStream);
+		when(bufferedReaderFactory.create(inputStream)).thenReturn(bufferedReader);
 		doAnswer(new Answer<String>() {
+			final AtomicInteger jobId = new AtomicInteger(9681);
+			
 			@Override
 			public String answer(InvocationOnMock invocation) throws Throwable {
-				// TODO Auto-generated method stub
-				return null;
+				int invocations = mockingDetails(invocation.getMock()).getInvocations().size();
+				
+				if (invocations == 1) {
+					return "{\"id\":1,\"error\":null,\"result\":[[[\"mining.notify\",\"22006f6716a30bcf\"],[\"mining.set_difficulty\",\"22006f6716a30bcf2\"]],\"22006f67\",4]}"; 
+				}
+				
+				if (invocations == 2) {
+					return "{\"id\":null,\"method\":\"mining.set_difficulty\",\"params\":[65536]}"; 
+				}
+				
+				return "{\"id\":null,\"method\":\"mining.notify\",\"params\":[\"" + jobId.getAndIncrement() + "\",\"09a383b0c66cb58edbf91195ee397b370b2d9526ba409218d48cfac06f74a527\",\"01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff440340aa14045a6497db2cfabe6d6ddc6d7813358824cb83cc8c01d7011c8edfcead078582937d644facff553363234000000000000000042f4c502f08\",\"ffffffff024bc73d95000000001976a91457757ed2ecf2052ff3126c397aca7defb9ca2cec88ac0000000000000000266a24aa21a9eda0fb7c9aa2db1773ac0657f45b886c3bfd7f6109e3a37492c913d14dbfef689b00000000\",[\"92e471384e46c0c60f8cca80c9d0d5d4f7fe69e3277ed97d42d71081468eb281\",\"5900c1da5546fc3cbda270a245b9c1e27ca046fff066e6b976c8041724df24f4\",\"d369fd47d3f9b642a44eba7d0fe0b27eb1f0a924bd8a00c81ca963e2b5d4d2ea\",\"05deba6d014dff44d273e7f75faf367ab130eee3ca270543cdbfa0d4ab7bdfe4\",\"ffc1c1c8337d63909062d174951c0a190b59cfcfb0ff66d1f52fbac3712ea7df\",\"c0e2ede7d39b2b84016819b70681a23055cd269fcd993add4407e5a4e14ec6fc\"],\"20000000\",\"1a048e6f\",\"5a6497db\",false]}";
 			}
-		}).when(inputStream);
+		}).when(bufferedReader).readLine();
 	}
 	
 	@Test
 	public void read() throws Exception {
-		ObservableSocket actual = ObservableSocket.connect(socket);
+		Iterable<StratumMessage> actual = ObservableSocket.from(socket).read().repeat(4).blockingIterable();
+		
+		assertThat(actual).hasSize(4);
 	}
 }
 

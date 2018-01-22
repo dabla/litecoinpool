@@ -10,7 +10,6 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.SocketAddress;
@@ -28,6 +27,7 @@ import io.reactivex.functions.Function;
 public class ObservableSocket {
 	private static final Logger LOGGER = getLogger(ObservableSocket.class);
 	private static final ObjectMapper MAPPER = new ObjectMapper();
+	private static final BufferedReaderFactory READER_FACTORY = new BufferedReaderFactory();
 	
 	static {
 		MAPPER.configure(AUTO_CLOSE_TARGET, false);
@@ -39,13 +39,13 @@ public class ObservableSocket {
 		this.socket = socket;
 	}
 	
-	public static ObservableSocket connect(SocketAddress address) throws IOException {
+	public static ObservableSocket from(SocketAddress address) throws IOException {
 		Socket socket = new Socket();
 		socket.connect(address);
-    	return connect(socket);
+    	return from(socket);
 	}
 	
-	public static ObservableSocket connect(Socket socket) throws IOException {
+	public static ObservableSocket from(Socket socket) {
     	return new ObservableSocket(socket);
 	}
 	
@@ -73,7 +73,7 @@ public class ObservableSocket {
 		return new Callable<BufferedReader>() {
 			@Override
 			public BufferedReader call() throws Exception {
-				return new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				return READER_FACTORY.create(socket.getInputStream());
 			}
     	};
 	}
@@ -88,7 +88,8 @@ public class ObservableSocket {
 					return just(MAPPER.readValue(line, StratumMessage.class));
 				}
 				
-				return empty();			}
+				return empty();
+			}
     	};
 	}
 }

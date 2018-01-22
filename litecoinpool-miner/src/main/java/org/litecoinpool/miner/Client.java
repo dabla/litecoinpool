@@ -30,7 +30,7 @@ public class Client {
 	}
 	
 	public static Client address(String host, int port) throws IOException {
-		return new Client(ObservableSocket.connect(new InetSocketAddress(host, port)));
+		return new Client(ObservableSocket.from(new InetSocketAddress(host, port)));
 	}
 	
 	public Client message(StratumMessage message) {
