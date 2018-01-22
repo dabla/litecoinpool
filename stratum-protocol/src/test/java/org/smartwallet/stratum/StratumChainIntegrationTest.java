@@ -43,6 +43,7 @@ public class StratumChainIntegrationTest extends AbstractTest {
 			}
 		});
 		
+		chain.handleBlock(StratumMessageBuilder.aStratumMessage().withMethod("mining.subscribe").withId(1L).build());		
 		chain.stopAsync();
 		
 		aPoller().doAssert(new Assertion() {

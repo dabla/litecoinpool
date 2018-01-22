@@ -1,0 +1,12 @@
+[21/01/2018 10:01:02:002 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[21/01/2018 10:01:02:002 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[21/01/2018 10:01:07:007 CET] main  INFO org.litecoinpool.miner.Client: < null
+[21/01/2018 10:01:19:019 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[21/01/2018 10:01:19:019 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[21/01/2018 10:01:25:025 CET] main  INFO org.litecoinpool.miner.Client: < null
+[21/01/2018 10:01:42:042 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[21/01/2018 10:01:42:042 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[21/01/2018 10:01:42:042 CET] main  INFO org.litecoinpool.miner.Client: > {"id":1,"method":{"value":"mining.subscribe","subscribe":false,"getHeader":false,"getChunk":false,"headersSubscribe":false,"addressSubscribe":false},"params":[]}
+[21/01/2018 10:01:49:049 CET] main  WARN org.unitils.core.ConfigurationLoader: No custom configuration file unitils.properties found.
+[21/01/2018 10:01:49:049 CET] main  INFO org.unitils.core.ConfigurationLoader: No local configuration file unitils-local.properties found.
+[21/01/2018 10:01:50:050 CET] main  INFO org.litecoinpool.miner.Client: > {"id":1,"method":{"value":"mining.subscribe","headersSubscribe":false,"addressSubscribe":false,"subscribe":false,"getHeader":false,"getChunk":false},"params":[]}

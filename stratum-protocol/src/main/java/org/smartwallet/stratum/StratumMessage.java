@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.JsonNode;
 
 /**
@@ -14,38 +15,15 @@ import com.fasterxml.jackson.databind.JsonNode;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StratumMessage {
-    private Long id;
+	public static final StratumMessage SENTINEL = new StratumMessage();
 
-    /** RPC method - for calls */
+	private Long id;
     private StratumMethod method;
-
-    /** Parameters - for calls */
     private List<JsonNode> params;
-
-    /** Result - for result */
-    @JsonProperty("result")
     private JsonNode result;
-
-    @JsonProperty("error")
     private String error;
 
-    public static final StratumMessage SENTINEL = new StratumMessage();
-
     private StratumMessage() {}
-
-    /*@JsonIgnore
-    public StratumMessage(Long id, JsonNode result) {
-    	this(id, null, null, null);
-    }
-
-    @JsonIgnore
-    StratumMessage(Long id, String method, JsonNode result) {
-    	this(id, method, null, null);
-    }
-    @JsonIgnore
-    StratumMessage(Long id, String method, List<JsonNode> params) {
-        this(id, method, params, null);
-    }*/
 
     @JsonIgnore
     StratumMessage(Long id, StratumMethod method, List<JsonNode> params, JsonNode result) {
@@ -59,6 +37,7 @@ public class StratumMessage {
 		return id;
 	}
     
+    @JsonUnwrapped
     public StratumMethod getMethod() {
 		return method;
 	}
@@ -67,10 +46,12 @@ public class StratumMessage {
 		return params;
 	}
     
+    @JsonProperty("result")
     public JsonNode getResult() {
 		return result;
 	}
     
+    @JsonProperty("error")
     public String getError() {
 		return error;
 	}

@@ -41,7 +41,13 @@ public class StratumMessageBuilder {
 	}
 
 	public StratumMessageBuilder withParams(Iterable<Object> params) {
-		return withParams(newArrayList(from(params).transform(toJsonNode())));
+		List<JsonNode> nodes = newArrayList(from(params).transform(toJsonNode()));
+		return withParams(nodes);
+	}
+	
+	public StratumMessageBuilder withParams(Object... params) {
+		List<JsonNode> nodes = newArrayList(from(params).transform(toJsonNode()));
+		return withParams(nodes);
 	}
 	
 	public StratumMessageBuilder withParams(List<JsonNode> params) {

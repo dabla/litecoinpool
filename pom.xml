@@ -54,8 +54,8 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>2.3.2</version>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>1.8</source>
+						<target>1.8</target>
 						<debug>true</debug>
 						<optimize>false</optimize>
 					</configuration>
@@ -185,6 +185,11 @@
 				<version>23.0</version>
 			</dependency>
 			<dependency>
+			    <groupId>io.reactivex.rxjava2</groupId>
+			    <artifactId>rxjava</artifactId>
+			    <version>2.1.8</version>
+			</dependency>
+			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>
 				<version>2.4.3</version>
@@ -210,6 +215,11 @@
 				<version>4.3.5</version>
 			</dependency>
 			<dependency>
+			    <groupId>org.apache.commons</groupId>
+			    <artifactId>commons-lang3</artifactId>
+			    <version>3.7</version>
+			</dependency>
+			<dependency>
 				<groupId>org.bitcoinj</groupId>
 				<artifactId>bitcoinj-core</artifactId>
 				<version>0.13.6</version>
@@ -217,6 +227,11 @@
 			<dependency>
 				<groupId>be.dabla</groupId>
 				<artifactId>smartcolors</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>be.dabla</groupId>
+				<artifactId>stratum-protocol</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -258,11 +273,6 @@
 				<groupId>org.easymock</groupId>
 				<artifactId>easymock</artifactId>
 				<version>3.2</version>
-			</dependency>
-			<dependency>
-				<groupId>org.assertj</groupId>
-				<artifactId>assertj-core</artifactId>
-				<version>1.7.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.easytesting</groupId>
@@ -311,6 +321,7 @@
 	<modules>
 		<module>smartcolors</module>
 		<module>stratum-protocol</module>
+		<module>litecoinpool-miner</module>
 	</modules>
 	
 	<profiles>

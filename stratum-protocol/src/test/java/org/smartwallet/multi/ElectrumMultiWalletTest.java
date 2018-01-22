@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.Coin;
@@ -201,7 +202,7 @@ public class ElectrumMultiWalletTest {
         String address = key.toAddress(params).toString();
         control.replay();
         multiWallet.handleAddressQueueItem(
-        		aStratumMessage().withId(1L).withMethod("blockchain.address.subscribe").withParams(newArrayList(TextNode.valueOf(address))).withResult(NullNode.getInstance()).build());
+        		aStratumMessage().withId(1L).withMethod("blockchain.address.subscribe").withParams(Collections.<JsonNode>singletonList(TextNode.valueOf(address))).withResult(NullNode.getInstance()).build());
         control.verify();
     }
 
