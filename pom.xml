@@ -220,6 +220,11 @@
 			    <version>3.7</version>
 			</dependency>
 			<dependency>
+			    <groupId>commons-codec</groupId>
+			    <artifactId>commons-codec</artifactId>
+			    <version>1.11</version>
+			</dependency>
+			<dependency>
 				<groupId>org.bitcoinj</groupId>
 				<artifactId>bitcoinj-core</artifactId>
 				<version>0.13.6</version>

@@ -3,9 +3,12 @@ package org.litecoinpool.miner;
 import static com.fasterxml.jackson.databind.node.NullNode.getInstance;
 import static com.google.common.collect.Iterables.get;
 import static com.google.common.collect.Iterables.getFirst;
+import static org.litecoinpool.miner.Hasher.hasher;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import org.apache.commons.codec.DecoderException;
 import org.smartwallet.stratum.StratumMessage;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -104,8 +107,8 @@ public class HasherBuilder {
 		return this;
 	}
 
-	public Hasher build() {
-		return new Hasher(extranonce1, extranonce2, jobId, previousHash, coinbase1, coinbase2, merkleBranches, version, nbits, ntime, cleanJobs);
+	public Hasher build() throws NoSuchAlgorithmException, DecoderException {
+		return hasher(extranonce1, extranonce2, jobId, previousHash, coinbase1, coinbase2, merkleBranches, version, nbits, ntime, cleanJobs);
 	}
 	
 	private static String[] toStringArray(JsonNode jsonNode) {
