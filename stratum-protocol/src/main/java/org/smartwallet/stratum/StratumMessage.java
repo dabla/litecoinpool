@@ -1,5 +1,9 @@
 package org.smartwallet.stratum;
 
+import static com.fasterxml.jackson.databind.node.NullNode.getInstance;
+import static org.smartwallet.stratum.StratumMethod.NULL;
+
+import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,7 +27,9 @@ public class StratumMessage {
     private JsonNode result;
     private String error;
 
-    private StratumMessage() {}
+    private StratumMessage() {
+    	this(null, NULL, Collections.<JsonNode>emptyList(), getInstance());
+    }
 
     @JsonIgnore
     StratumMessage(Long id, StratumMethod method, List<JsonNode> params, JsonNode result) {

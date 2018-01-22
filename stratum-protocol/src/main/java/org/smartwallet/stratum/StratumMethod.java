@@ -9,6 +9,7 @@ public class StratumMethod {
     public static final String BLOCKCHAIN_GET_HEADER = "blockchain.block.get_header";
     public static final String BLOCKCHAIN_GET_CHUNK = "blockchain.block.get_chunk";
     
+    public static final StratumMethod NULL = new StratumMethod(null);
     public static final StratumMethod HEADERS_SUBSCRIBE = new StratumMethod(BLOCKCHAIN_HEADERS_SUBSCRIBE);
     public static final StratumMethod ADDRESS_SUBSCRIBE = new StratumMethod(BLOCKCHAIN_ADDRESS_SUBSCRIBE);
     public static final StratumMethod GET_HEADER = new StratumMethod(BLOCKCHAIN_GET_HEADER);
