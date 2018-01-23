@@ -13,10 +13,10 @@ public class SCryptMessageDigest extends MessageDigest {
 	private static final String ALGORITHM_NAME = "HmacSHA256";
 	
 	private final Mac mac;
-	private final byte[] H = new byte[32];
-	private final byte[] B = new byte[128 + 4];
-    private final int[] X = new int[32];
-    private final int[] V = new int[32 * 1024];
+	private byte[] H = new byte[32];
+	private byte[] B = new byte[128 + 4];
+    private int[] X = new int[32];
+    private int[] V = new int[32 * 1024];
     
     public SCryptMessageDigest() throws NoSuchAlgorithmException {
     	super("SCrypt");
@@ -29,10 +29,15 @@ public class SCryptMessageDigest extends MessageDigest {
 	}
 	
 	@Override
-	protected void engineUpdate(byte[] header, int offset, int len) {
+	public void update(byte[] header) {
+		int nonce = header[76] | header[77] << 8 | header[78] << 16 | header[79] << 24;
+		engineUpdate(header, nonce, header.length);
+	}
+	
+	@Override
+	public void engineUpdate(byte[] header, int nonce, int len) {
 		try {
 	        arraycopy(header, 0, B, 0, 76);
-	        int nonce = header[76] | header[77] << 8 | header[78] << 16 | header[79] << 24;
 	        B[76] = (byte) (nonce >>  0);
 	        B[77] = (byte) (nonce >>  8);
 	        B[78] = (byte) (nonce >> 16);
@@ -56,15 +61,15 @@ public class SCryptMessageDigest extends MessageDigest {
 	        
 	        for (int i = 0; i < 1024; i++) {
 	            arraycopy(X, 0, V, i * 32, 32);
-	            xorSalsa8(0, 16);
-	            xorSalsa8(16, 0);
+	            xorSalsa8(X, 0, 16);
+	            xorSalsa8(X, 16, 0);
 	        }
 	        for (int i = 0; i < 1024; i++) {
 	        	int k = (X[16] & 1023) * 32;
 	            for (int j = 0; j < 32; j++)
 	                X[j] ^= V[k + j];
-	            xorSalsa8(0, 16);
-	            xorSalsa8(16, 0);
+	            xorSalsa8(X, 0, 16);
+	            xorSalsa8(X, 16, 0);
 	        }
 	
 	        for (int i = 0; i < 32; i++) {
@@ -89,14 +94,17 @@ public class SCryptMessageDigest extends MessageDigest {
 
 	@Override
 	protected void engineReset() {
-		
+		H = new byte[32];
+		B = new byte[128 + 4];
+	    X = new int[32];
+	    V = new int[32 * 1024];
 	}
 	
-	private void xorSalsa8(int di, int xi) {
-    	xorSalsa(8, di, xi);
+	private static void xorSalsa8(int[] X, int di, int xi) {
+    	xorSalsa(X, 8, di, xi);
     }
     
-    private void xorSalsa(int rounds, int di, int xi) {
+    private static void xorSalsa(int[] X, int rounds, int di, int xi) {
         int x00 = (X[di +  0] ^= X[xi +  0]);
         int x01 = (X[di +  1] ^= X[xi +  1]);
         int x02 = (X[di +  2] ^= X[xi +  2]);

@@ -3,6 +3,7 @@ package org.litecoinpool.miner;
 import static java.security.MessageDigest.getInstance;
 import static java.security.Security.addProvider;
 
+import java.security.DigestException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -46,6 +47,11 @@ public class Crypto {
 	
 	public byte[] scrypt(byte[] value) {
 		scrypt.update(value);
+	    return scrypt.digest();
+	}
+	
+	public byte[] scrypt(byte[] value, int nonce) throws DigestException {
+	    scrypt.update(value, nonce, value.length);
 	    return scrypt.digest();
 	}
 }
