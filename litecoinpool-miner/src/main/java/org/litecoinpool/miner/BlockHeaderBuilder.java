@@ -16,6 +16,7 @@ public class BlockHeaderBuilder {
 	private String merkleRoot;
 	private String ntime;
 	private String nbits;
+	private String nonce = NONCE;
 	
 	private BlockHeaderBuilder() {}
 	
@@ -47,6 +48,11 @@ public class BlockHeaderBuilder {
 		this.nbits = nbits;
 		return this;
 	}
+	
+	public BlockHeaderBuilder withNonce(String nonce) {
+		this.nonce = nonce;
+		return this;
+	}
 
 	public byte[] build() throws DecoderException {
 		String blockHeader = new StringBuffer()
@@ -55,7 +61,7 @@ public class BlockHeaderBuilder {
 			.append(merkleRoot)
 			.append(reverseHex(ntime))
 			.append(reverseHex(nbits))
-			.append(NONCE)
+			.append(reverseHex(nonce))
 			.toString();
 		
 		return decodeHex(blockHeader);
