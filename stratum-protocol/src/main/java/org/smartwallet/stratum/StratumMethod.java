@@ -2,7 +2,11 @@ package org.smartwallet.stratum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+@JsonSerialize(using=StratumMethodSerializer.class)
+@JsonDeserialize(using=StratumMethodDeserializer.class)
 public class StratumMethod {
 	public static final String BLOCKCHAIN_HEADERS_SUBSCRIBE = "blockchain.headers.subscribe";
     public static final String BLOCKCHAIN_ADDRESS_SUBSCRIBE = "blockchain.address.subscribe";
@@ -26,19 +30,23 @@ public class StratumMethod {
     }
     
     public static StratumMethod stratumMethod(String value) {
-    	if (value.equals(BLOCKCHAIN_HEADERS_SUBSCRIBE)) {
+    	if (value == null) {
+    		return NULL;
+    	}
+    	
+    	if (BLOCKCHAIN_HEADERS_SUBSCRIBE.equals(value)) {
     		return HEADERS_SUBSCRIBE;
     	}
     	
-    	if (value.equals(BLOCKCHAIN_ADDRESS_SUBSCRIBE)) {
+    	if (BLOCKCHAIN_ADDRESS_SUBSCRIBE.equals(value)) {
     		return ADDRESS_SUBSCRIBE;
     	}
     	
-    	if (value.equals(BLOCKCHAIN_GET_HEADER)) {
+    	if (BLOCKCHAIN_GET_HEADER.equals(value)) {
     		return GET_HEADER;
     	}
     	
-    	if (value.equals(BLOCKCHAIN_GET_CHUNK)) {
+    	if (BLOCKCHAIN_GET_CHUNK.equals(value)) {
     		return GET_CHUNK;
     	}
     	

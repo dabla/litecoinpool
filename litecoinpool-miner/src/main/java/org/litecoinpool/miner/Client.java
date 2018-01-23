@@ -2,7 +2,6 @@ package org.litecoinpool.miner;
 
 import static com.fasterxml.jackson.core.JsonGenerator.Feature.AUTO_CLOSE_TARGET;
 import static org.slf4j.LoggerFactory.getLogger;
-import static org.smartwallet.stratum.StratumMessage.SENTINEL;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -19,7 +18,6 @@ public class Client {
 	private static final Logger LOGGER = getLogger(Client.class);
 	private static final ObjectMapper MAPPER = new ObjectMapper();
 	private final ObservableSocket socket;
-	private StratumMessage message = SENTINEL;
 	
 	static {
 		MAPPER.configure(AUTO_CLOSE_TARGET, false);
@@ -33,13 +31,12 @@ public class Client {
 		return new Client(ObservableSocket.from(new InetSocketAddress(host, port)));
 	}
 	
-	public Client message(StratumMessage message) {
-		this.message = message;
+	public Client send(StratumMessage message) throws IOException {
+		socket.write(message);
 		return this;
 	}
 
-	public void execute() throws IOException {
-        socket.write(message);
+	public void listen() throws IOException {
         socket.read()
         	  .takeWhile(isConnected())
         	  .repeat()
@@ -51,7 +48,7 @@ public class Client {
 		return new Function<StratumMessage,String>() {
 			@Override
 			public String apply(StratumMessage message) throws Exception {
-				LOGGER.info("< {}", message);
+				LOGGER.info("< {}", MAPPER.writeValueAsString(message));
 				return message.toString();
 			}
 		};

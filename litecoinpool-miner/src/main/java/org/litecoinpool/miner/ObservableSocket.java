@@ -85,6 +85,7 @@ public class ObservableSocket {
 				String line = reader.readLine();
 
 				if (isNotBlank(line)) {
+					LOGGER.info("< {}", line);
 					return just(MAPPER.readValue(line, StratumMessage.class));
 				}
 				
