@@ -3,6 +3,9 @@ package org.litecoinpool.miner;
 import static com.google.common.base.Joiner.on;
 import static com.google.common.base.Splitter.fixedLength;
 import static com.google.common.collect.FluentIterable.from;
+import static org.apache.commons.codec.binary.Hex.decodeHex;
+
+import org.apache.commons.codec.DecoderException;
 
 import com.google.common.base.Function;
 
@@ -45,8 +48,8 @@ public class BlockHeaderBuilder {
 		return this;
 	}
 
-	public String build() {
-		return new StringBuffer()
+	public byte[] build() throws DecoderException {
+		String blockHeader = new StringBuffer()
 			.append(reverseHex(version))
 			.append(from(fixedLength(8).split(previousHash)).transform(reverseHex()).join(on("")))
 			.append(merkleRoot)
@@ -54,6 +57,8 @@ public class BlockHeaderBuilder {
 			.append(reverseHex(nbits))
 			.append(NONCE)
 			.toString();
+		
+		return decodeHex(blockHeader);
 	}
 	
 	private static Function<String,String> reverseHex() {
