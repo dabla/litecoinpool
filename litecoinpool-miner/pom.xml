@@ -96,6 +96,10 @@
 		<dependency>
             <groupId>be.dabla</groupId>
             <artifactId>parallel-iterable</artifactId>
+        </dependency>
+		<dependency>
+            <groupId>be.dabla</groupId>
+            <artifactId>parallel-iterable</artifactId>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>

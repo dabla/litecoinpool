@@ -318,6 +318,11 @@
                 <groupId>be.dabla</groupId>
                 <artifactId>parallel-iterable</artifactId>
                 <version>1.6</version>
+            </dependency>
+			<dependency>
+                <groupId>be.dabla</groupId>
+                <artifactId>parallel-iterable</artifactId>
+                <version>1.6</version>
                 <type>test-jar</type>
             </dependency>
 		</dependencies>
