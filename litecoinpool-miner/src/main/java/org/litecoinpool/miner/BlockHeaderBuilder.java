@@ -5,7 +5,7 @@ import static com.google.common.base.Splitter.fixedLength;
 import static com.google.common.collect.FluentIterable.from;
 import static org.apache.commons.codec.binary.Hex.decodeHex;
 import static org.apache.commons.codec.binary.Hex.encodeHexString;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.litecoinpool.miner.Nonce.reverseHex;
 
 import org.apache.commons.codec.DecoderException;
 
@@ -34,7 +34,7 @@ public class BlockHeaderBuilder {
 
 	public BlockHeaderBuilder withPreviousHash(String previousHash) {
 		if (previousHash != null) {
-			this.previousHash = from(fixedLength(8).split(previousHash)).transform(reverseHex()).join(on(""));
+			this.previousHash = from(fixedLength(8).split(previousHash)).transform(reversedHex()).join(on(""));
 		}
 		return this;
 	}
@@ -84,28 +84,12 @@ public class BlockHeaderBuilder {
 	            (byte)value};
 	}
 	
-	private static Function<String,String> reverseHex() {
+	private static Function<String,String> reversedHex() {
 		return new Function<String,String>() {
 			@Override
 			public String apply(String value) {
 				return reverseHex(value);
 			}
 		};
-	}
-
-	private static String reverseHex(String value) {
-		if (isNotBlank(value)) {
-		    // TODO: Validation that the length is even
-		    int lengthInBytes = value.length() / 2;
-		    char[] chars = new char[lengthInBytes * 2];
-		    for (int index = 0; index < lengthInBytes; index++) {
-		        int reversedIndex = lengthInBytes - 1 - index;
-		        chars[reversedIndex * 2] = value.charAt(index * 2);
-		        chars[reversedIndex * 2 + 1] = value.charAt(index * 2 + 1);
-		    }
-		    return new String(chars);
-		}
-		
-		return null;
 	}
 }

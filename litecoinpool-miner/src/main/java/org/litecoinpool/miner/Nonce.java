@@ -1,5 +1,9 @@
 package org.litecoinpool.miner;
 
+import static java.util.Arrays.copyOfRange;
+import static org.apache.commons.codec.binary.Hex.encodeHexString;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 import java.math.BigInteger;
 
 public class Nonce {
@@ -20,11 +24,35 @@ public class Nonce {
 	}
 	
 	public static Nonce nonce(String value) {
-		return VALUES[new BigInteger(value, 16).intValue()];
+		return nonce(new BigInteger(reverseHex(value), 16).intValue());
+	}
+	
+	public static Nonce nonce(byte value[]) {
+		return nonce(encodeHexString(copyOfRange(value, 76, 79)));
+	}
+	
+	public static Nonce nonce(int value) {
+		return VALUES[value];
 	}
 	
 	public static Nonce min() {
 		return VALUES[MIN_VALUE];
+	}
+	
+	public static String reverseHex(String value) {
+		if (isNotBlank(value)) {
+		    // TODO: Validation that the length is even
+		    int lengthInBytes = value.length() / 2;
+		    char[] chars = new char[lengthInBytes * 2];
+		    for (int index = 0; index < lengthInBytes; index++) {
+		        int reversedIndex = lengthInBytes - 1 - index;
+		        chars[reversedIndex * 2] = value.charAt(index * 2);
+		        chars[reversedIndex * 2 + 1] = value.charAt(index * 2 + 1);
+		    }
+		    return new String(chars);
+		}
+		
+		return null;
 	}
 	
 	public static Nonce max() {

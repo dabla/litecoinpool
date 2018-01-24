@@ -16,4 +16,9 @@ public class NonceTest {
 	public void max() throws Exception {
 		assertThat(Nonce.max().getValue()).isEqualTo(MAX_VALUE);
 	}
+	
+	@Test
+	public void nonce() throws Exception {
+		assertThat(Nonce.nonce("8a7f0000").getValue()).isEqualTo(32650);
+	}
 }

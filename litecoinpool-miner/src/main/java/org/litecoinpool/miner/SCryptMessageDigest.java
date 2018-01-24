@@ -2,6 +2,7 @@ package org.litecoinpool.miner;
 
 import static java.lang.Integer.rotateLeft;
 import static java.lang.System.arraycopy;
+import static org.litecoinpool.miner.Nonce.nonce;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -30,8 +31,8 @@ public class SCryptMessageDigest extends MessageDigest {
 	
 	@Override
 	public void update(byte[] header) {
-		int nonce = header[76] | header[77] << 8 | header[78] << 16 | header[79] << 24;
-		engineUpdate(header, nonce, header.length);
+		Nonce nonce = nonce(header);
+		engineUpdate(header, nonce.getValue(), header.length);
 	}
 	
 	@Override
