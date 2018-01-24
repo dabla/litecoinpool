@@ -19,7 +19,6 @@ public class HasherTest {
 				 .withExtranonce2(EXTRANONCE2)
 				 .build();
 		
-		assertThat(actual.getCoinbase()).isEqualTo("280b3927f6763b1ed90cae2a3cef4d27c743f6a7d91e3901dc3816a46acacf36");
-		assertThat(actual.getMerkleRoot()).isEqualTo("0b1edc1ccf82d3214423fc68234f4946119e39df2cc2137e31ebc186191d5422");
+		assertThat(actual.hash()).isEqualTo("f6f13e350aa4f251e192ab8a78690ee99f1cc2d930d4ae16c4172a0a8aefddd0");
 	}
 }

@@ -24,6 +24,7 @@ public class BlockHeaderBuilderTest {
 	}
 	
 	@Test
+	// https://stackoverflow.com/questions/22059359/trying-to-understand-nbits-value-from-stratum-protocol
 	public void build_withOtherNtimeAndNonce() throws Exception {
 		byte[] actual = aBlockHeader().withVersion(VERSION)
 									  .withPreviousHash(PREVIOUS_HASH)

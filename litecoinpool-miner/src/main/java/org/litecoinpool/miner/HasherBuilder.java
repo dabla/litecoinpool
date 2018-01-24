@@ -3,6 +3,11 @@ package org.litecoinpool.miner;
 import static com.fasterxml.jackson.databind.node.NullNode.getInstance;
 import static com.google.common.collect.Iterables.get;
 import static com.google.common.collect.Iterables.getFirst;
+import static org.apache.commons.codec.binary.Hex.decodeHex;
+import static org.apache.commons.lang3.StringUtils.join;
+import static org.apache.commons.lang3.StringUtils.stripToNull;
+import static org.litecoinpool.miner.BlockHeaderBuilder.aBlockHeader;
+import static org.litecoinpool.miner.Crypto.crypto;
 import static org.litecoinpool.miner.Hasher.hasher;
 
 import java.security.NoSuchAlgorithmException;
@@ -16,6 +21,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
 
 public class HasherBuilder {
+	private static final byte[] EMPTY_COINBASE = new byte[]{};
 	private static final String[] EMPTY_MERKLE_BRANCHES = new String[]{};
 	
 	private String extranonce1;
@@ -101,14 +107,34 @@ public class HasherBuilder {
 		this.ntime = ntime;
 		return this;
 	}
-
+	
 	public HasherBuilder withCleanJobs(boolean cleanJobs) {
 		this.cleanJobs = cleanJobs;
 		return this;
 	}
 
 	public Hasher build() throws NoSuchAlgorithmException, DecoderException {
-		return hasher(extranonce1, extranonce2, jobId, previousHash, coinbase1, coinbase2, merkleBranches, version, nbits, ntime, cleanJobs);
+		byte[] coinbase = coinbase(coinbase1, extranonce1, extranonce2, coinbase2);
+		String merkleRoot = MerkleBranchJoiner.on(coinbase).join(merkleBranches);
+		
+		BlockHeaderBuilder blockHeaderBuilder = aBlockHeader()
+			.withVersion(version)
+			.withPreviousHash(previousHash)
+			.withMerkleRoot(merkleRoot)
+			.withNtime(ntime)
+			.withNbits(nbits);
+		
+		return hasher(extranonce1, extranonce2, jobId, blockHeaderBuilder, cleanJobs);
+	}
+
+	private static byte[] coinbase(String coinbase1, String extranonce1, String extranonce2, String coinbase2) throws DecoderException {
+		String coinbase = stripToNull(join(coinbase1, extranonce1, extranonce2, coinbase2));
+		
+		if (coinbase != null) {
+			return crypto().dsha256(decodeHex(coinbase));
+		}
+		
+		return EMPTY_COINBASE;
 	}
 	
 	private static String[] toStringArray(JsonNode jsonNode) {

@@ -4,7 +4,7 @@ import static org.smartwallet.stratum.StratumMessageBuilder.aStratumMessage;
 
 import org.junit.Test;
 
-public class ClientTest extends AbstractTest {
+public class ClientIntegrationTest extends AbstractTest {
 	@Test
 	public void listen() throws Exception {
 		Client client = Client.address("litecoinpool.org", 3333);
