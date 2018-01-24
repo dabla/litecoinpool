@@ -5,6 +5,11 @@ import static org.litecoinpool.miner.ByteAsserter.assertThat;
 
 import org.junit.Test;
 
+/**
+ * 
+ * @see <a href="https://stackoverflow.com/questions/22059359/trying-to-understand-nbits-value-from-stratum-protocol">Trying to understand nbits value from stratum protocol</a>
+ *
+ */
 public class BlockHeaderBuilderTest {
 	private static final String VERSION = "00000002";
 	private static final String PREVIOUS_HASH = "7dcf1304b04e79024066cd9481aa464e2fe17966e19edf6f33970e1fe0b60277";
@@ -24,7 +29,6 @@ public class BlockHeaderBuilderTest {
 	}
 	
 	@Test
-	// https://stackoverflow.com/questions/22059359/trying-to-understand-nbits-value-from-stratum-protocol
 	public void build_withOtherNtimeAndNonce() throws Exception {
 		byte[] actual = aBlockHeader().withVersion(VERSION)
 									  .withPreviousHash(PREVIOUS_HASH)

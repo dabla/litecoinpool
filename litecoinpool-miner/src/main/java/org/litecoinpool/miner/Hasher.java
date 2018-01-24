@@ -43,6 +43,10 @@ public class Hasher {
 		return crypto().scrypt(blockHeaderBuilder.build());
 	}
 	
+	public byte[] hash(int nonce) throws DecoderException {
+		return crypto().scrypt(blockHeaderBuilder.withNonce(nonce).build());
+	}
+	
 	public byte[] hash(String nonce) throws DecoderException {
 		return crypto().scrypt(blockHeaderBuilder.withNonce(nonce).build());
 	}

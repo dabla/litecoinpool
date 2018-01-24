@@ -1,28 +1,27 @@
 package org.litecoinpool.miner;
 
-import static java.lang.Double.parseDouble;
 import static org.slf4j.LoggerFactory.getLogger;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import org.slf4j.Logger;
 
 public class TargetMatcher {
 	private static final Logger LOGGER = getLogger(TargetMatcher.class);
-	private static final double MAX_TARGET = new BigInteger("00000000FFFF0000000000000000000000000000000000000000000000000000", 16).doubleValue();
+	private static final BigInteger MAX_TARGET = new BigInteger("ffff0000000000000000000000000000000000000000000000000000000000000", 16);
+	private final BigInteger target;
 	
-	private final double target;
-
-	private TargetMatcher(double target) {
+	private TargetMatcher(BigInteger target) {
 		this.target = target;
 	}
 
 	public static TargetMatcher withDifficulty(String difficulty) {
-		return withDifficulty(parseDouble(difficulty));
+		return withDifficulty(new BigDecimal(difficulty).toBigInteger());
 	}
 	
-	public static TargetMatcher withDifficulty(double difficulty) {
-		return withTarget(MAX_TARGET / difficulty);
+	public static TargetMatcher withDifficulty(BigInteger difficulty) {
+		return withTarget(MAX_TARGET.divide(difficulty));
 	}
 	
 	public static TargetMatcher withTarget(String target) {
@@ -30,19 +29,15 @@ public class TargetMatcher {
 	}
 	
 	public static TargetMatcher withTarget(BigInteger target) {
-		LOGGER.info("Target is {}", target.toString(16));
-		return new TargetMatcher(target.doubleValue());
-	}
-	
-	public static TargetMatcher withTarget(Double target) {
+		LOGGER.info("Target is {} ({})", target, target.toString(16));
 		return new TargetMatcher(target);
 	}
 	
-	public double getTarget() {
+	public BigInteger getTarget() {
 		return target;
 	}
 	
 	public boolean matches(String hash) {
-		return new BigInteger(hash, 16).doubleValue() < target;
+		return new BigInteger(hash, 16).doubleValue() < target.doubleValue();
 	}
 }

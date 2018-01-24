@@ -126,7 +126,7 @@ public class HasherBuilder {
 		
 		return hasher(extranonce1, extranonce2, jobId, blockHeaderBuilder, cleanJobs);
 	}
-
+	
 	private static byte[] coinbase(String coinbase1, String extranonce1, String extranonce2, String coinbase2) throws DecoderException {
 		String coinbase = stripToNull(join(coinbase1, extranonce1, extranonce2, coinbase2));
 		

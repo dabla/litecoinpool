@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * 
  * @see <a href="https://bitcoin.stackexchange.com/questions/22929/full-example-data-for-scrypt-stratum-client">Full example data for scrypt Stratum-client</a>
+ * @see <a href="https://slushpool.com/help/topic/stratum-protocol/">Stratum Mining Protocol</a>
  *
  */
 public class HasherBuilderTest extends AbstractTest {
