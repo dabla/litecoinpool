@@ -2,6 +2,8 @@ package org.litecoinpool.miner;
 
 import static org.litecoinpool.miner.Crypto.crypto;
 
+import java.security.DigestException;
+
 import org.apache.commons.codec.DecoderException;
 
 public class Hasher {
@@ -43,8 +45,8 @@ public class Hasher {
 		return crypto().scrypt(blockHeaderBuilder.build());
 	}
 	
-	public byte[] hash(int nonce) throws DecoderException {
-		return crypto().scrypt(blockHeaderBuilder.withNonce(nonce).build());
+	public byte[] hash(int nonce) throws DecoderException, DigestException {
+		return crypto().scrypt(blockHeaderBuilder.build(), nonce);
 	}
 	
 	public byte[] hash(String nonce) throws DecoderException {

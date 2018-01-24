@@ -35,6 +35,14 @@ public class SCryptMessageDigest extends MessageDigest {
 	}
 	
 	@Override
+	public void update(byte[] header, int offset, int len) {
+        if (header == null) {
+            throw new IllegalArgumentException("No input buffer given");
+        }
+        engineUpdate(header, offset, len);
+    }
+	
+	@Override
 	public void engineUpdate(byte[] header, int nonce, int len) {
 		try {
 	        arraycopy(header, 0, B, 0, 76);

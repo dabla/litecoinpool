@@ -59,9 +59,7 @@ public class BlockHeaderBuilder {
 	}
 	
 	public BlockHeaderBuilder withNonce(String nonce) {
-		System.out.println("nonce: " + nonce);
 		this.nonce = reverseHex(nonce);
-		System.out.println("nonce: " + this.nonce);
 		return this;
 	}
 
