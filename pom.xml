@@ -50,6 +50,20 @@
 					</dependencies>
 				</plugin>
 				<plugin>
+	                <groupId>org.bsc.maven</groupId>
+	                <artifactId>maven-processor-plugin</artifactId>
+	                <version>2.2.4</version>
+	                <executions>
+	                    <execution>
+	                        <id>process</id>
+	                        <goals>
+	                            <goal>process</goal>
+	                        </goals>
+	                        <phase>generate-sources</phase>
+	                    </execution>
+	                </executions>
+	            </plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>2.3.2</version>
@@ -215,6 +229,11 @@
 				<version>4.3.5</version>
 			</dependency>
 			<dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>1.4</version>
+            </dependency>
+			<dependency>
 			    <groupId>org.apache.commons</groupId>
 			    <artifactId>commons-lang3</artifactId>
 			    <version>3.7</version>
@@ -325,6 +344,16 @@
                 <version>1.6</version>
                 <type>test-jar</type>
             </dependency>
+            <dependency>
+				<groupId>org.openjdk.jmh</groupId>
+				<artifactId>jmh-core</artifactId>
+				<version>0.5.6</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.openjdk.jmh</groupId>
+			    <artifactId>jmh-generator-annprocess</artifactId>
+			    <version>0.5.6</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

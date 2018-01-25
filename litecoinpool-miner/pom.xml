@@ -9,6 +9,36 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>litecoinpool-miner</artifactId>
+    
+    <build>
+    	<plugins>
+    		<plugin>
+                <groupId>org.bsc.maven</groupId>
+                <artifactId>maven-processor-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>process</id>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <processors>
+                                <processor>org.openjdk.jmh.generators.GenerateMicroBenchmarkProcessor</processor>
+                            </processors>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.openjdk.jmh</groupId>
+						<artifactId>jmh-generator-annprocess</artifactId>
+                        <version>0.5.6</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+    	</plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -46,6 +76,10 @@
         <dependency>
             <groupId>org.bitcoinj</groupId>
             <artifactId>bitcoinj-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
         </dependency>
         <dependency>
 		    <groupId>org.apache.commons</groupId>
@@ -103,5 +137,14 @@
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
+        <dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-generator-annprocess</artifactId>
+			<scope>provided</scope>
+		</dependency>
     </dependencies>
 </project>
