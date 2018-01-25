@@ -15,7 +15,7 @@ import java.security.DigestException;
 
 import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
-import org.smartwallet.stratum.StratumMessage;
+import org.stratum.protocol.StratumMessage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Function;

@@ -16,7 +16,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import org.smartwallet.stratum.StratumMessage;
+import org.stratum.protocol.StratumMessage;
 
 public class ObservableSocketTest extends AbstractTest {
 	@Mock

@@ -2,11 +2,11 @@ package org.litecoinpool.miner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.litecoinpool.miner.HasherBuilder.aHasher;
-import static org.smartwallet.stratum.StratumMessage.SENTINEL;
+import static org.stratum.protocol.StratumMessage.SENTINEL;
 
 import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
-import org.smartwallet.stratum.StratumMessage;
+import org.stratum.protocol.StratumMessage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

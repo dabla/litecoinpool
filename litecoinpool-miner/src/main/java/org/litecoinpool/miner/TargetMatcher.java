@@ -23,6 +23,10 @@ public class TargetMatcher {
 		return withDifficulty(new BigDecimal(difficulty));
 	}
 	
+	public static TargetMatcher withDifficulty(int difficulty) {
+		return withDifficulty(new BigDecimal(difficulty));
+	}
+	
 	public static TargetMatcher withDifficulty(BigDecimal difficulty) {
 		return withTarget(MAX_TARGET.divide(difficulty, UP).toBigInteger());
 	}

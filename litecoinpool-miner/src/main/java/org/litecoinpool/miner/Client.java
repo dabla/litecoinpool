@@ -1,23 +1,44 @@
 package org.litecoinpool.miner;
 
 import static com.fasterxml.jackson.core.JsonGenerator.Feature.AUTO_CLOSE_TARGET;
+import static com.fasterxml.jackson.databind.node.NullNode.getInstance;
+import static com.google.common.collect.Iterables.getFirst;
+import static io.reactivex.Observable.just;
+import static io.reactivex.schedulers.Schedulers.computation;
+import static org.apache.commons.codec.binary.Hex.encodeHexString;
+import static org.litecoinpool.miner.HasherBuilder.aHasher;
+import static org.litecoinpool.miner.HasherBuilderTest.EXTRANONCE1;
+import static org.litecoinpool.miner.HasherBuilderTest.EXTRANONCE2;
+import static org.litecoinpool.miner.Nonce.reverseHex;
+import static org.litecoinpool.miner.TargetMatcher.withDifficulty;
 import static org.slf4j.LoggerFactory.getLogger;
+import static org.stratum.protocol.StratumMessageBuilder.aStratumMessage;
+import static org.stratum.protocol.StratumMethod.MINING_SUBMIT;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.slf4j.Logger;
-import org.smartwallet.stratum.StratumMessage;
+import org.stratum.protocol.StratumMessage;
+import org.stratum.protocol.StratumMessageBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
+import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.Subject;
 
 public class Client {
 	private static final Logger LOGGER = getLogger(Client.class);
 	private static final ObjectMapper MAPPER = new ObjectMapper();
 	private final ObservableSocket socket;
+    private final Subject<StratumMessage> messages = PublishSubject.<StratumMessage>create().toSerialized();
+    private final AtomicLong id = new AtomicLong(1);
+    private TargetMatcher matcher = withDifficulty(1);
 	
 	static {
 		MAPPER.configure(AUTO_CLOSE_TARGET, false);
@@ -31,25 +52,133 @@ public class Client {
 		return new Client(ObservableSocket.from(new InetSocketAddress(host, port)));
 	}
 	
-	public Client send(StratumMessage message) throws IOException {
-		socket.write(message);
+	public Client send(StratumMessageBuilder message) throws IOException {
+		socket.write(message.withId(id.getAndIncrement()).build());
 		return this;
 	}
 
 	public void listen() throws IOException {
-        socket.read()
+		messages.flatMap(process(matcher)).map(submit()).subscribe();
+		
+		socket.read()
         	  .takeWhile(isConnected())
         	  .repeat()
-        	  .map(log())
+        	  .map(setDifficulty())
+        	  .filter(isNotify())
+        	  .subscribeWith(messages)
         	  .blockingSubscribe();
 	}
 
-	private static Function<StratumMessage,String> log() {
-		return new Function<StratumMessage,String>() {
+	private Function<StratumMessageBuilder,StratumMessageBuilder> submit() {
+		return new Function<StratumMessageBuilder,StratumMessageBuilder>() {
 			@Override
-			public String apply(StratumMessage message) throws Exception {
-				LOGGER.info("< {}", MAPPER.writeValueAsString(message));
-				return message.toString();
+			public StratumMessageBuilder apply(StratumMessageBuilder message) throws Exception {
+				send(message);
+				return message;
+			}
+		};
+	}
+
+	private Function<StratumMessage,StratumMessage> setDifficulty() {
+		return new Function<StratumMessage,StratumMessage>() {
+			@Override
+			public StratumMessage apply(StratumMessage message) throws Exception {
+				if (message.getMethod().isSetDifficulty()) {
+					int difficulty = getFirst(message.getParams(), getInstance()).asInt(1);
+					LOGGER.info("difficulty: {}", difficulty);
+					matcher = withDifficulty(difficulty);
+				}
+				
+				return message;
+			}
+		};
+	}
+
+	private static Predicate<StratumMessage> isNotify() {
+		return new Predicate<StratumMessage>() {
+			@Override
+			public boolean test(StratumMessage message) throws Exception {
+				return message.getMethod().isNotify();
+			}
+		};
+	}
+
+	private static Function<StratumMessage,StratumMessage> log(final String format) {
+		return new Function<StratumMessage,StratumMessage>() {
+			@Override
+			public StratumMessage apply(StratumMessage message) throws Exception {
+				LOGGER.info(format, MAPPER.writeValueAsString(message));
+				
+				return message;
+			}
+		};
+	}
+	
+	private static Function<StratumMessage,ObservableSource<StratumMessageBuilder>> process(final TargetMatcher matcher) {
+		return new Function<StratumMessage,ObservableSource<StratumMessageBuilder>>() {
+			@Override
+			public ObservableSource<StratumMessageBuilder> apply(StratumMessage message) throws Exception {
+				return just(message).observeOn(computation())
+									.map(hasher())
+						  			.flatMap(hash(matcher, message));
+			}
+		};
+	}
+	
+	private static Function<StratumMessage,Hasher> hasher() {
+		return new Function<StratumMessage,Hasher>() {
+			@Override
+			public Hasher apply(StratumMessage message) throws Exception {
+				return aHasher().from(message)
+		 				 		.withExtranonce1(EXTRANONCE1)
+		 				 		.withExtranonce2(EXTRANONCE2)
+		 				 		.build();
+			}
+		};
+	}
+	
+	private static Function<Hasher,ObservableSource<StratumMessageBuilder>> hash(final TargetMatcher matcher, final StratumMessage message) {
+		return new Function<Hasher,ObservableSource<StratumMessageBuilder>>() {
+			@Override
+			public ObservableSource<StratumMessageBuilder> apply(Hasher hasher) throws Exception {
+				return Observable.fromArray(Nonce.values()).flatMap(new Function<Nonce, ObservableSource<StratumMessageBuilder>>() {
+					@Override
+					public ObservableSource<StratumMessageBuilder> apply(Nonce nonce) throws Exception {
+						return just(nonce)
+								.observeOn(computation())
+								.map(hash(hasher))
+								.filter(matches(matcher))
+								.map(submit(hasher, nonce));
+					}
+				});
+			}
+		};
+	}
+	
+	private static io.reactivex.functions.Function<Nonce, String> hash(final Hasher hasher) {
+		return new io.reactivex.functions.Function<Nonce, String>() {
+			@Override
+			public String apply(Nonce nonce) throws Exception {
+				return encodeHexString(hasher.hash(nonce.getValue()));
+			}
+		};
+	}
+	
+	private static Predicate<String> matches(final TargetMatcher matcher) {
+		return new Predicate<String>() {
+			@Override
+			public boolean test(String hash) throws Exception {
+				return matcher.matches(hash);
+			}
+		};
+	}
+	
+	private static Function<String,StratumMessageBuilder> submit(final Hasher hasher, final Nonce nonce) {
+		return new Function<String,StratumMessageBuilder>() {
+			@Override
+			public StratumMessageBuilder apply(String hash) throws Exception {
+				return aStratumMessage().withMethod(MINING_SUBMIT)
+										.withParams("dabla.1", hasher.getJobId(), hasher.getExtranonce2(), hasher.getNtime(), reverseHex(nonce.toString()));
 			}
 		};
 	}

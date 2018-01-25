@@ -55,7 +55,7 @@ public class StratumMethod {
 
     @JsonIgnore
     public boolean isSubscribe() { 
-    	return ".subscribe".endsWith(value);
+    	return value.endsWith(".subscribe");
     }
     
     @JsonIgnore

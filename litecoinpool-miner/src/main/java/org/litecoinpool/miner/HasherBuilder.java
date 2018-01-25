@@ -8,13 +8,12 @@ import static org.apache.commons.lang3.StringUtils.join;
 import static org.apache.commons.lang3.StringUtils.stripToNull;
 import static org.litecoinpool.miner.BlockHeaderBuilder.aBlockHeader;
 import static org.litecoinpool.miner.Crypto.crypto;
-import static org.litecoinpool.miner.Hasher.hasher;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.apache.commons.codec.DecoderException;
-import org.smartwallet.stratum.StratumMessage;
+import org.stratum.protocol.StratumMessage;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.base.Function;
@@ -124,7 +123,7 @@ public class HasherBuilder {
 			.withNtime(ntime)
 			.withNbits(nbits);
 		
-		return hasher(extranonce1, extranonce2, jobId, blockHeaderBuilder, cleanJobs);
+		return new Hasher(extranonce1, extranonce2, jobId, ntime, blockHeaderBuilder, cleanJobs);
 	}
 	
 	private static byte[] coinbase(String coinbase1, String extranonce1, String extranonce2, String coinbase2) throws DecoderException {

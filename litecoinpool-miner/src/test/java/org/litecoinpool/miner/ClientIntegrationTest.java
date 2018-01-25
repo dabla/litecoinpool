@@ -1,6 +1,8 @@
 package org.litecoinpool.miner;
 
-import static org.smartwallet.stratum.StratumMessageBuilder.aStratumMessage;
+import static org.stratum.protocol.StratumMessageBuilder.aStratumMessage;
+import static org.stratum.protocol.StratumMethod.MINING_AUTHORIZE;
+import static org.stratum.protocol.StratumMethod.MINING_SUBSCRIBE;
 
 import org.junit.Test;
 
@@ -8,8 +10,8 @@ public class ClientIntegrationTest extends AbstractTest {
 	@Test
 	public void listen() throws Exception {
 		Client client = Client.address("litecoinpool.org", 3333);
-		client.send(aStratumMessage().withId(1L).withMethod("mining.subscribe").build())
-			  .send(aStratumMessage().withId(2L).withMethod("mining.authorize").withParams("dabla.1","1").build())
+		client.send(aStratumMessage().withMethod(MINING_SUBSCRIBE))
+			  .send(aStratumMessage().withMethod(MINING_AUTHORIZE).withParams("dabla.1","1"))
 			  .listen();
 	}
 	

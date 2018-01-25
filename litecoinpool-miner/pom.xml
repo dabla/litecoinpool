@@ -90,14 +90,6 @@
 		    <artifactId>commons-codec</artifactId>
 		</dependency>
         <dependency>
-            <groupId>be.dabla</groupId>
-            <artifactId>smartcolors</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>be.dabla</groupId>
-            <artifactId>stratum-protocol</artifactId>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>

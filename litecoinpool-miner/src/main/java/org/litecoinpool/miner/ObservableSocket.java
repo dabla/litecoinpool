@@ -16,8 +16,9 @@ import java.net.SocketAddress;
 import java.util.concurrent.Callable;
 
 import org.slf4j.Logger;
-import org.smartwallet.stratum.StratumMessage;
+import org.stratum.protocol.StratumMessage;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.reactivex.Observable;
@@ -86,7 +87,14 @@ public class ObservableSocket {
 
 				if (isNotBlank(line)) {
 					LOGGER.info("< {}", line);
-					return just(MAPPER.readValue(line, StratumMessage.class));
+					
+					try {
+						return just(MAPPER.readValue(line, StratumMessage.class));
+					}
+					catch(JsonParseException e) {
+						LOGGER.warn("JSON parsing failed: ", e);
+						return empty();
+					}
 				}
 				
 				return empty();

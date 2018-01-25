@@ -10,19 +10,17 @@ public class Hasher {
 	private final String extranonce1;
 	private final String extranonce2;
 	private final String jobId;
+	private final String ntime;
 	private final BlockHeaderBuilder blockHeaderBuilder;
 	private final boolean cleanJobs;
 	
-	Hasher(String extranonce1, String extranonce2, String jobId, BlockHeaderBuilder blockHeaderBuilder, boolean cleanJobs) {
+	Hasher(String extranonce1, String extranonce2, String jobId, String ntime, BlockHeaderBuilder blockHeaderBuilder, boolean cleanJobs) {
 		this.extranonce1 = extranonce1;
 		this.extranonce2 = extranonce2;
 		this.jobId = jobId;
+		this.ntime = ntime;
 		this.blockHeaderBuilder = blockHeaderBuilder;
 		this.cleanJobs = cleanJobs;
-	}
-	
-	static Hasher hasher(String extranonce1, String extranonce2, String jobId, BlockHeaderBuilder blockHeaderBuilder, boolean cleanJobs) {
-		return new Hasher(extranonce1, extranonce2, jobId, blockHeaderBuilder, cleanJobs);
 	}
 	
 	public String getExtranonce1() {
@@ -35,6 +33,10 @@ public class Hasher {
 
 	public String getJobId() {
 		return jobId;
+	}
+	
+	public String getNtime() {
+		return ntime;
 	}
 
 	public boolean isCleanJobs() {
