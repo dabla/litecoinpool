@@ -39,22 +39,6 @@ public class Nonce {
 		return VALUES[MIN_VALUE];
 	}
 	
-	public static String reverseHex(String value) {
-		if (isNotBlank(value)) {
-		    // TODO: Validation that the length is even
-		    int lengthInBytes = value.length() / 2;
-		    char[] chars = new char[lengthInBytes * 2];
-		    for (int index = 0; index < lengthInBytes; index++) {
-		        int reversedIndex = lengthInBytes - 1 - index;
-		        chars[reversedIndex * 2] = value.charAt(index * 2);
-		        chars[reversedIndex * 2 + 1] = value.charAt(index * 2 + 1);
-		    }
-		    return new String(chars);
-		}
-		
-		return null;
-	}
-	
 	public static Nonce max() {
 		return VALUES[VALUES.length - 1];
 	}
@@ -63,7 +47,37 @@ public class Nonce {
 		return value;
 	}
 	
+	@Override
+	public String toString() {
+		return reverseHex(encodeHexString(intToByteArray(value)));
+	}
+	
 	public static Nonce[] values() {
 		return VALUES;
+	}
+	
+	public static final byte[] intToByteArray(int value) {
+	    return new byte[] {
+	            (byte)(value >>> 24),
+	            (byte)(value >>> 16),
+	            (byte)(value >>> 8),
+	            (byte)value};
+	}
+	
+	public static String reverseHex(String value) {
+		if (isNotBlank(value)) {
+		    // TODO: Validation that the length is even
+		    int lengthInBytes = value.length() / 2;
+		    char[] chars = new char[lengthInBytes * 2];
+		    for (int index = 0; index < lengthInBytes; index++) {
+		        int reversedIndex = (lengthInBytes - 1 - index) * 2;
+		        int position = index * 2;
+		        chars[reversedIndex] = value.charAt(position);
+		        chars[++reversedIndex] = value.charAt(++position);
+		    }
+		    return new String(chars);
+		}
+		
+		return null;
 	}
 }

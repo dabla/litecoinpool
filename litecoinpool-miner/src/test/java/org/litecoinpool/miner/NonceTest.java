@@ -21,4 +21,9 @@ public class NonceTest {
 	public void nonce() throws Exception {
 		assertThat(Nonce.nonce("8a7f0000").getValue()).isEqualTo(32650);
 	}
+	
+	@Test
+	public void asString() throws Exception {
+		assertThat(Nonce.nonce(32650).toString()).isEqualTo("8a7f0000");
+	}
 }

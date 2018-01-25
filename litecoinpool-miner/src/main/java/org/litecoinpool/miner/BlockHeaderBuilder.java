@@ -5,6 +5,7 @@ import static com.google.common.base.Splitter.fixedLength;
 import static com.google.common.collect.FluentIterable.from;
 import static org.apache.commons.codec.binary.Hex.decodeHex;
 import static org.apache.commons.codec.binary.Hex.encodeHexString;
+import static org.litecoinpool.miner.Nonce.intToByteArray;
 import static org.litecoinpool.miner.Nonce.reverseHex;
 
 import org.apache.commons.codec.DecoderException;
@@ -74,14 +75,6 @@ public class BlockHeaderBuilder {
 			.toString();
 		
 		return decodeHex(blockHeader);
-	}
-	
-	private static final byte[] intToByteArray(int value) {
-	    return new byte[] {
-	            (byte)(value >>> 24),
-	            (byte)(value >>> 16),
-	            (byte)(value >>> 8),
-	            (byte)value};
 	}
 	
 	private static Function<String,String> reversedHex() {
