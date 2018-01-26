@@ -3,8 +3,6 @@ package org.litecoinpool.miner;
 import static org.litecoinpool.miner.BlockHeaderBuilder.aBlockHeader;
 import static org.litecoinpool.miner.ByteAsserter.assertThat;
 
-import java.math.BigInteger;
-
 import org.junit.Test;
 
 /**
@@ -32,9 +30,6 @@ public class BlockHeaderBuilderTest {
 	
 	@Test
 	public void build_withOtherNtimeAndNonce() throws Exception {
-		System.out.println("nonce: " + new BigInteger("00007f8a", 16).intValue());
-		System.out.println("nonce: " + new BigInteger("8a7f0000", 16).intValue());
-		
 		byte[] actual = aBlockHeader().withVersion(VERSION)
 									  .withPreviousHash(PREVIOUS_HASH)
 									  .withMerkleRoot(MERKLE_ROOT)

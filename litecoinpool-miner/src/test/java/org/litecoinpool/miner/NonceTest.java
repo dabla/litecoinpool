@@ -19,11 +19,12 @@ public class NonceTest {
 	
 	@Test
 	public void nonce() throws Exception {
-		assertThat(Nonce.nonce("8a7f0000").getValue()).isEqualTo(32650);
+		assertThat(Nonce.nonce("00007f8a").getValue()).isEqualTo(32650);
 	}
 	
 	@Test
 	public void asString() throws Exception {
-		assertThat(Nonce.nonce(32650).toString()).isEqualTo("8a7f0000");
+		assertThat(Nonce.nonce("00007f8a").toString()).isEqualTo("00007f8a");
+		assertThat(Nonce.nonce(32650).toString()).isEqualTo("00007f8a");
 	}
 }

@@ -24,11 +24,11 @@ public class Nonce {
 	}
 	
 	public static Nonce nonce(String value) {
-		return nonce(new BigInteger(reverseHex(value), 16).intValue());
+		return nonce(new BigInteger(value, 16).intValue());
 	}
 	
 	public static Nonce nonce(byte value[]) {
-		return nonce(encodeHexString(copyOfRange(value, 76, 79)));
+		return nonce(reverseHex(encodeHexString(copyOfRange(value, 76, 79))));
 	}
 	
 	public static Nonce nonce(int value) {
@@ -49,7 +49,7 @@ public class Nonce {
 	
 	@Override
 	public String toString() {
-		return reverseHex(encodeHexString(intToByteArray(value)));
+		return encodeHexString(intToByteArray(value));
 	}
 	
 	public static Nonce[] values() {

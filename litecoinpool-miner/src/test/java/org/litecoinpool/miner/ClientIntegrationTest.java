@@ -4,10 +4,12 @@ import static org.stratum.protocol.StratumMessageBuilder.aStratumMessage;
 import static org.stratum.protocol.StratumMethod.MINING_AUTHORIZE;
 import static org.stratum.protocol.StratumMethod.MINING_SUBSCRIBE;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class ClientIntegrationTest extends AbstractTest {
 	@Test
+	@Ignore
 	public void listen() throws Exception {
 		Client client = Client.address("litecoinpool.org", 3333);
 		client.send(aStratumMessage().withMethod(MINING_SUBSCRIBE))

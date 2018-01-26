@@ -9,7 +9,6 @@ import static org.apache.commons.codec.binary.Hex.encodeHexString;
 import static org.litecoinpool.miner.HasherBuilder.aHasher;
 import static org.litecoinpool.miner.HasherBuilderTest.EXTRANONCE1;
 import static org.litecoinpool.miner.HasherBuilderTest.EXTRANONCE2;
-import static org.litecoinpool.miner.Nonce.reverseHex;
 import static org.litecoinpool.miner.TargetMatcher.withDifficulty;
 import static org.slf4j.LoggerFactory.getLogger;
 import static org.stratum.protocol.StratumMessageBuilder.aStratumMessage;
@@ -159,7 +158,7 @@ public class Client {
 		return new io.reactivex.functions.Function<Nonce, String>() {
 			@Override
 			public String apply(Nonce nonce) throws Exception {
-				return encodeHexString(hasher.hash(nonce.getValue()));
+				return encodeHexString(hasher.hash(nonce));
 			}
 		};
 	}
@@ -178,7 +177,7 @@ public class Client {
 			@Override
 			public StratumMessageBuilder apply(String hash) throws Exception {
 				return aStratumMessage().withMethod(MINING_SUBMIT)
-										.withParams("dabla.1", hasher.getJobId(), hasher.getExtranonce2(), hasher.getNtime(), reverseHex(nonce.toString()));
+										.withParams("dabla.1", hasher.getJobId(), hasher.getExtranonce2(), hasher.getNtime(), nonce.toString());
 			}
 		};
 	}
