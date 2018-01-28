@@ -3,12 +3,9 @@ package org.litecoinpool.miner;
 import static com.google.common.base.Joiner.on;
 import static com.google.common.base.Splitter.fixedLength;
 import static com.google.common.collect.FluentIterable.from;
-import static org.apache.commons.codec.binary.Hex.decodeHex;
 import static org.apache.commons.codec.binary.Hex.encodeHexString;
 import static org.litecoinpool.miner.Nonce.intToByteArray;
 import static org.litecoinpool.miner.Nonce.reverseHex;
-
-import org.apache.commons.codec.DecoderException;
 
 import com.google.common.base.Function;
 
@@ -64,7 +61,7 @@ public class BlockHeaderBuilder {
 		return this;
 	}
 
-	public byte[] build() throws DecoderException {
+	public BlockHeader build() {
 		String blockHeader = new StringBuffer()
 			.append(version)
 			.append(previousHash)
@@ -74,7 +71,7 @@ public class BlockHeaderBuilder {
 			.append(nonce)
 			.toString();
 		
-		return decodeHex(blockHeader);
+		return new BlockHeader(blockHeader);
 	}
 	
 	private static Function<String,String> reversedHex() {

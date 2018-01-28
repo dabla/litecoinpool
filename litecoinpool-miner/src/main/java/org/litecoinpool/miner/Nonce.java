@@ -1,5 +1,6 @@
 package org.litecoinpool.miner;
 
+import static com.google.common.base.Strings.padEnd;
 import static java.util.Arrays.copyOfRange;
 import static org.apache.commons.codec.binary.Hex.encodeHexString;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -79,5 +80,9 @@ public class Nonce {
 		}
 		
 		return null;
+	}
+	
+	public static BigInteger fromHex(String value) {
+		return new BigInteger(value, 16);
 	}
 }

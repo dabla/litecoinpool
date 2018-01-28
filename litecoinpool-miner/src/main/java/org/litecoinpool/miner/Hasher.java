@@ -44,7 +44,7 @@ public class Hasher {
 	}
 	
 	public byte[] hash() throws DecoderException {
-		return crypto().scrypt(blockHeaderBuilder.build());
+		return crypto().scrypt(blockHeaderBuilder.build().getBytes());
 	}
 	
 	public byte[] hash(Nonce nonce) throws DecoderException, DigestException {
@@ -52,10 +52,10 @@ public class Hasher {
 	}
 	
 	private byte[] hash(int nonce) throws DecoderException, DigestException {
-		return crypto().scrypt(blockHeaderBuilder.build(), nonce); // TODO: maybe pass nonce via blockHeaderBuilder
+		return crypto().scrypt(blockHeaderBuilder.build().getBytes(), nonce); // TODO: maybe pass nonce via blockHeaderBuilder
 	}
 	
 	public byte[] hash(String nonce) throws DecoderException {
-		return crypto().scrypt(blockHeaderBuilder.withNonce(nonce).build());
+		return crypto().scrypt(blockHeaderBuilder.withNonce(nonce).build().getBytes());
 	}
 }

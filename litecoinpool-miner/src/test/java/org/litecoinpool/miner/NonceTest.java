@@ -1,6 +1,7 @@
 package org.litecoinpool.miner;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
 import static org.litecoinpool.miner.Nonce.MAX_VALUE;
 import static org.litecoinpool.miner.Nonce.MIN_VALUE;
 
@@ -26,5 +27,10 @@ public class NonceTest {
 	public void asString() throws Exception {
 		assertThat(Nonce.nonce("00007f8a").toString()).isEqualTo("00007f8a");
 		assertThat(Nonce.nonce(32650).toString()).isEqualTo("00007f8a");
+	}
+	
+	@Test
+	public void fromHex() throws Exception {
+		Nonce.fromHex("1b3cc366");
 	}
 }

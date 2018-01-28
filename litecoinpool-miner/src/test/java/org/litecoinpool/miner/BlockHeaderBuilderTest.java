@@ -18,26 +18,26 @@ public class BlockHeaderBuilderTest {
 
 	@Test
 	public void build() throws Exception {
-		byte[] actual = aBlockHeader().withVersion(VERSION)
-					  				  .withPreviousHash(PREVIOUS_HASH)
-					  				  .withMerkleRoot(MERKLE_ROOT)
-					  				  .withNtime("53178f9b")
-					  				  .withNbits(NBITS)
-					  				  .build();
+		BlockHeader actual = aBlockHeader().withVersion(VERSION)
+					  				  	   .withPreviousHash(PREVIOUS_HASH)
+					  				  	   .withMerkleRoot(MERKLE_ROOT)
+					  				  	   .withNtime("53178f9b")
+					  				  	   .withNbits(NBITS)
+					  				  	   .build();
 		
-		assertThat(actual).isEqualTo("020000000413cf7d02794eb094cd66404e46aa816679e12f6fdf9ee11f0e97337702b6e00b1edc1ccf82d3214423fc68234f4946119e39df2cc2137e31ebc186191d54229b8f1753dbdf441b00000000");
+		assertThat(actual.getBytes()).isEqualTo("020000000413cf7d02794eb094cd66404e46aa816679e12f6fdf9ee11f0e97337702b6e00b1edc1ccf82d3214423fc68234f4946119e39df2cc2137e31ebc186191d54229b8f1753dbdf441b00000000");
 	}
 	
 	@Test
 	public void build_withOtherNtimeAndNonce() throws Exception {
-		byte[] actual = aBlockHeader().withVersion(VERSION)
-									  .withPreviousHash(PREVIOUS_HASH)
-									  .withMerkleRoot(MERKLE_ROOT)
-									  .withNtime("53178f9f")
-									  .withNbits(NBITS)
-									  .withNonce("00007f8a")
-									  .build();
+		BlockHeader actual = aBlockHeader().withVersion(VERSION)
+									  	   .withPreviousHash(PREVIOUS_HASH)
+									  	   .withMerkleRoot(MERKLE_ROOT)
+									  	   .withNtime("53178f9f")
+									  	   .withNbits(NBITS)
+									  	   .withNonce("00007f8a")
+									  	   .build();
 		
-		assertThat(actual).isEqualTo("020000000413cf7d02794eb094cd66404e46aa816679e12f6fdf9ee11f0e97337702b6e00b1edc1ccf82d3214423fc68234f4946119e39df2cc2137e31ebc186191d54229f8f1753dbdf441b8a7f0000");
+		assertThat(actual.getBytes()).isEqualTo("020000000413cf7d02794eb094cd66404e46aa816679e12f6fdf9ee11f0e97337702b6e00b1edc1ccf82d3214423fc68234f4946119e39df2cc2137e31ebc186191d54229f8f1753dbdf441b8a7f0000");
 	}
 }

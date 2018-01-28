@@ -31,20 +31,25 @@ public enum StratumMethod implements EnumValue<String> {
     public static StratumMethod stratumMethod(String value) {
     	return EnumValue.valueOf(StratumMethod.class, value, NULL);
     }
+    
+    @JsonIgnore
+    public boolean isNull() { 
+    	return equals(NULL);
+    }
 
     @JsonIgnore
     public boolean isSubscribe() { 
-    	return "mining.subscribe".equals(value);
+    	return equals(MINING_SUBSCRIBE);
     }
     
     @JsonIgnore
     public boolean isNotify() { 
-    	return "mining.notify".equals(value);
+    	return equals(MINING_NOTIFY);
     }
     
     @JsonIgnore
     public boolean isSetDifficulty() { 
-    	return "mining.set_difficulty".equals(value);
+    	return equals(MINING_SET_DIFFICULTY);
     }
 
     @JsonProperty("method")
