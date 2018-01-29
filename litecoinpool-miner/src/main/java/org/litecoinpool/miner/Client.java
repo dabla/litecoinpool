@@ -2,33 +2,31 @@ package org.litecoinpool.miner;
 
 import static com.fasterxml.jackson.core.JsonGenerator.Feature.AUTO_CLOSE_TARGET;
 import static com.fasterxml.jackson.databind.node.NullNode.getInstance;
+import static com.google.common.collect.Iterables.get;
 import static com.google.common.collect.Iterables.getFirst;
-import static com.google.common.collect.Iterables.getLast;
-import static io.reactivex.Observable.fromArray;
 import static io.reactivex.Observable.just;
+import static io.reactivex.Observable.range;
 import static io.reactivex.schedulers.Schedulers.computation;
-import static org.apache.commons.codec.binary.Hex.encodeHexString;
 import static org.litecoinpool.miner.HasherBuilder.aHasher;
+import static org.litecoinpool.miner.Nonce.intToHexString;
+import static org.litecoinpool.miner.Nonce.max;
+import static org.litecoinpool.miner.Nonce.min;
+import static org.litecoinpool.miner.Nonce.nonce;
 import static org.litecoinpool.miner.TargetMatcher.withDifficulty;
 import static org.slf4j.LoggerFactory.getLogger;
 import static org.stratum.protocol.StratumMessageBuilder.aStratumMessage;
 import static org.stratum.protocol.StratumMethod.MINING_SUBMIT;
-import static org.stratum.protocol.StratumMethod.stratumMethod;
 
 import java.io.IOException;
-import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.slf4j.Logger;
 import org.stratum.protocol.StratumMessage;
 import org.stratum.protocol.StratumMessageBuilder;
-import org.stratum.protocol.StratumMethod;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
@@ -42,6 +40,8 @@ public class Client {
     private final Subject<StratumMessage> messages = PublishSubject.<StratumMessage>create().toSerialized();
     private final AtomicLong id = new AtomicLong(1);
     private TargetMatcher matcher = withDifficulty(1);
+    private String extranonce1 = null;
+    private String extranonce2 = null;
 	
 	static {
 		MAPPER.configure(AUTO_CLOSE_TARGET, false);
@@ -91,8 +91,13 @@ public class Client {
 					LOGGER.info("difficulty: {}", difficulty);
 					matcher = withDifficulty(difficulty);
 				}
-				/*else if (message.getMethod().isNull()) {
-					for (JsonNode node : message.getResult()) {
+				else if (message.getMethod().isNull() &&
+						 message.getResult() != null && 
+						 message.getResult().isArray()) {
+					extranonce1 = get(message.getResult(), 1, getInstance()).asText();
+					extranonce2 = intToHexString(get(message.getResult(), 1, getInstance()).asInt());
+					
+					/*for (JsonNode node : message.getResult()) {
 						if (node.isArray()) {
 							for (JsonNode subNode : node) {
 								StratumMethod stratumMethod = stratumMethod(getFirst(subNode, getInstance()).asText());
@@ -104,8 +109,8 @@ public class Client {
 								}
 							}
 						}
-					}
-				}*/
+					}*/
+				}
 				
 				return message;
 			}
@@ -132,7 +137,7 @@ public class Client {
 		};
 	}
 	
-	private static Function<StratumMessage,ObservableSource<StratumMessageBuilder>> process(final TargetMatcher matcher) {
+	private Function<StratumMessage,ObservableSource<StratumMessageBuilder>> process(final TargetMatcher matcher) {
 		return new Function<StratumMessage,ObservableSource<StratumMessageBuilder>>() {
 			@Override
 			public ObservableSource<StratumMessageBuilder> apply(StratumMessage message) throws Exception {
@@ -143,13 +148,13 @@ public class Client {
 		};
 	}
 	
-	private static Function<StratumMessage,Hasher> hasher() {
+	private Function<StratumMessage,Hasher> hasher() {
 		return new Function<StratumMessage,Hasher>() {
 			@Override
 			public Hasher apply(StratumMessage message) throws Exception {
 				return aHasher().from(message)
-		 				 		.withExtranonce1(null) // TODO: resolve extranonce1
-		 				 		.withExtranonce2(null) // TODO: resolve extranonce2
+		 				 		.withExtranonce1(extranonce1)
+		 				 		.withExtranonce2(extranonce2)
 		 				 		.build();
 			}
 		};
@@ -159,7 +164,8 @@ public class Client {
 		return new Function<Hasher,ObservableSource<StratumMessageBuilder>>() {
 			@Override
 			public ObservableSource<StratumMessageBuilder> apply(Hasher hasher) throws Exception {
-				return fromArray(Nonce.values()).flatMap(new Function<Nonce, ObservableSource<StratumMessageBuilder>>() {
+				return range(min().getValue(), max().getValue()).map(toNonce())
+																.flatMap(new Function<Nonce, ObservableSource<StratumMessageBuilder>>() {
 					@Override
 					public ObservableSource<StratumMessageBuilder> apply(Nonce nonce) throws Exception {
 						return just(nonce)
@@ -169,6 +175,15 @@ public class Client {
 								.map(submit(hasher, nonce));
 					}
 				});
+			}
+		};
+	}
+	
+	private static Function<Integer,Nonce> toNonce() {
+		return new Function<Integer,Nonce>() {
+			@Override
+			public Nonce apply(Integer value) throws Exception {
+				return nonce(value);
 			}
 		};
 	}

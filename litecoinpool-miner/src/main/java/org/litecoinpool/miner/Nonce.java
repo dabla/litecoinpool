@@ -1,6 +1,7 @@
 package org.litecoinpool.miner;
 
-import static com.google.common.base.Strings.padEnd;
+import static java.lang.Integer.MAX_VALUE;
+import static java.lang.Integer.parseInt;
 import static java.util.Arrays.copyOfRange;
 import static org.apache.commons.codec.binary.Hex.encodeHexString;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -8,24 +9,17 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import java.math.BigInteger;
 
 public class Nonce {
-	public static final int MIN_VALUE = 0;
-	public static final int MAX_VALUE = 65535;
-	private static final Nonce[] VALUES = new Nonce[MAX_VALUE + 1];
+	private static final Nonce MIN = new Nonce(0);
+	private static final Nonce MAX = new Nonce(MAX_VALUE);
 	
 	private final int value;
-	
-	static {
-		for (int value = MIN_VALUE; value <= MAX_VALUE; value++) {
-			VALUES[value] = new Nonce(value);
-		}
-	}
 	
 	private Nonce(int value) {
 		this.value = value;
 	}
 	
 	public static Nonce nonce(String value) {
-		return nonce(new BigInteger(value, 16).intValue());
+		return nonce(parseInt(value, 16));
 	}
 	
 	public static Nonce nonce(byte value[]) {
@@ -33,15 +27,19 @@ public class Nonce {
 	}
 	
 	public static Nonce nonce(int value) {
-		return VALUES[value];
+		switch(value) {
+			case 0 : 		 return MIN;
+			case MAX_VALUE : return MAX;
+			default : 		 return new Nonce(value);
+		}
 	}
 	
 	public static Nonce min() {
-		return VALUES[MIN_VALUE];
+		return MIN;
 	}
 	
 	public static Nonce max() {
-		return VALUES[VALUES.length - 1];
+		return MAX;
 	}
 	
 	public int getValue() {
@@ -50,19 +48,20 @@ public class Nonce {
 	
 	@Override
 	public String toString() {
-		return encodeHexString(intToByteArray(value));
+		return intToHexString(value);
 	}
-	
-	public static Nonce[] values() {
-		return VALUES;
-	}
-	
+
+	// TODO: extract helper methods to HexUtils class
 	public static final byte[] intToByteArray(int value) {
 	    return new byte[] {
 	            (byte)(value >>> 24),
 	            (byte)(value >>> 16),
 	            (byte)(value >>> 8),
 	            (byte)value};
+	}
+	
+	public static String intToHexString(int value) {
+		return encodeHexString(intToByteArray(value));
 	}
 	
 	public static String reverseHex(String value) {

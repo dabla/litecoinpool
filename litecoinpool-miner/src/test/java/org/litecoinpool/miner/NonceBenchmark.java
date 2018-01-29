@@ -1,5 +1,8 @@
 package org.litecoinpool.miner;
 
+import static java.lang.Integer.MAX_VALUE;
+import static org.litecoinpool.miner.Nonce.nonce;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openjdk.jmh.annotations.BenchmarkMode;
@@ -28,22 +31,22 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 public class NonceBenchmark {
     @GenerateMicroBenchmark
     public void reverseHex() {
-    	for (Nonce nonce : Nonce.values()) {
-    		Nonce.reverseHex(nonce.toString());
+    	for (int index = 0; index <= MAX_VALUE; index++) {
+    		Nonce.reverseHex(nonce(index).toString());
         }
     }
 
     @GenerateMicroBenchmark
     public void nonceFromString() {
-    	for (Nonce nonce : Nonce.values()) {
-    		Nonce.nonce(nonce.toString());
+    	for (int index = 0; index <= MAX_VALUE; index++) {
+    		nonce(index).toString();
         }
     }
 
     @GenerateMicroBenchmark
     public void nonceFromInteger() {
-    	for (Nonce nonce : Nonce.values()) {
-    		Nonce.nonce(nonce.getValue());
+    	for (int index = 0; index <= MAX_VALUE; index++) {
+    		nonce(index).getValue();
         }
     }
     

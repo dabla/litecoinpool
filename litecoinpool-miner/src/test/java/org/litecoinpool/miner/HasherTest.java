@@ -1,5 +1,6 @@
 package org.litecoinpool.miner;
 
+import static java.lang.Integer.MAX_VALUE;
 import static org.apache.commons.codec.binary.Hex.encodeHexString;
 import static org.litecoinpool.miner.ByteAsserter.assertThat;
 import static org.litecoinpool.miner.HasherBuilder.aHasher;
@@ -51,9 +52,8 @@ public class HasherTest {
 		
 		TargetMatcher matcher = withDifficulty("32");
 		
-		// 0 to 65535
-		for (Nonce nonce : Nonce.values()) {
-			String hash = encodeHexString(actual.hash(nonce));
+		for (int index = 0; index <= MAX_VALUE; index++) {
+			String hash = encodeHexString(actual.hash(nonce(index)));
 			boolean found = matcher.matches(hash);
 			if (found) {
 				System.out.println(hash);
