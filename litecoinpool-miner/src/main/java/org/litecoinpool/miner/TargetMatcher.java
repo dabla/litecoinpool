@@ -1,6 +1,7 @@
 package org.litecoinpool.miner;
 
 import static com.google.common.base.Strings.padEnd;
+import static java.util.Arrays.fill;
 import static org.apache.commons.codec.binary.Hex.decodeHex;
 import static org.apache.commons.lang3.ArrayUtils.addAll;
 import static org.litecoinpool.miner.Nonce.fromHex;
@@ -8,7 +9,6 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Arrays;
 
 import org.apache.commons.codec.DecoderException;
 import org.slf4j.Logger;
@@ -68,7 +68,7 @@ public class TargetMatcher {
 	public boolean matches(byte[] hashIntegerBytes) {
 		// Convert the hashInteger to a 256 bits (32 bytes) bytes array
 		byte[] hashBytes256Bits = new byte[32];
-		Arrays.fill(hashBytes256Bits, (byte) 0);
+		fill(hashBytes256Bits, (byte) 0);
 		copyInto(hashIntegerBytes, hashBytes256Bits, 32 - hashIntegerBytes.length);
 
 		// Then swap bytes from big-endian to little-endian
@@ -81,8 +81,10 @@ public class TargetMatcher {
 		// Build the integer (with a 0 value byte to fake an unsigned int (sign
 		// bit to 0)
 		BigInteger hashInteger = new BigInteger(addAll(BIG_INTEGER_FAKE_SIGN_ARRAY, hashBytes256Bits));
-
-		return new BigDecimal(hashInteger).compareTo(target) < 0;
+		
+		//double compareTo = new BigDecimal(hashInteger).doubleValue() - target.doubleValue();
+		int compareTo = new BigDecimal(hashInteger).compareTo(target);
+		return compareTo < 0;
 	}
 	
 	/**
@@ -148,24 +150,24 @@ public class TargetMatcher {
 	 * @throws IndexOutOfBoundsException
 	 */
 	public static final byte[] reverseWords(byte[] dataToSwap, int wordByteLength) throws IndexOutOfBoundsException {
-		byte[] result = null;
 		if (dataToSwap != null) {
-
 			if (wordByteLength < 1 || dataToSwap.length % wordByteLength > 0) {
 				throw new IndexOutOfBoundsException("The wordByteLength is not a multiple of input data. wordByteLength=" + wordByteLength
 						+ ", inputDataSize=" + dataToSwap.length);
 			}
 
-			result = new byte[dataToSwap.length];
+			byte[] result = new byte[dataToSwap.length];
 
 			for (int inputIndex = 0, resultIndex = dataToSwap.length - wordByteLength; inputIndex < dataToSwap.length; inputIndex += wordByteLength, resultIndex -= wordByteLength) {
 				for (int i = 0; i < wordByteLength; i++) {
 					result[resultIndex + i] = dataToSwap[inputIndex + i];
 				}
 			}
+			
+			return result;
 		}
-
-		return result;
+		
+		return null;
 	}
 
 	/**
@@ -181,8 +183,10 @@ public class TargetMatcher {
 	 */
 	public static final void copyInto(byte[] toCopy, byte[] into, int intoStartIndex) {
 		int maxCopyIndex = into.length - intoStartIndex;
-		for (int i = 0; i < toCopy.length && i <= maxCopyIndex; i++) {
+		System.arraycopy(toCopy, 0, into, intoStartIndex, maxCopyIndex);
+		
+		/*for (int i = 0; i < toCopy.length && i <= maxCopyIndex; i++) {
 			into[i + intoStartIndex] = toCopy[i];
-		}
+		}*/
 }
 }
