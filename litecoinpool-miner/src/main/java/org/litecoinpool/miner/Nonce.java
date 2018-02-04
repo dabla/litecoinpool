@@ -7,10 +7,11 @@ import static org.apache.commons.codec.binary.Hex.encodeHexString;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 import java.math.BigInteger;
+import java.util.Iterator;
 
-public class Nonce {
+public class Nonce implements Iterable<Nonce> {
 	private static final Nonce MIN = new Nonce(0);
-	private static final Nonce MAX = new Nonce(MAX_VALUE);
+	private static final Nonce MAX = new MaxNonce();
 	
 	private final int value;
 	
@@ -44,6 +45,14 @@ public class Nonce {
 	
 	public int getValue() {
 		return value;
+	}
+	
+	public boolean isMax() {
+		return false;
+	}
+	
+	public Nonce increment() {
+		return nonce(value + 1);
 	}
 	
 	@Override
@@ -83,5 +92,51 @@ public class Nonce {
 	
 	public static BigInteger fromHex(String value) {
 		return new BigInteger(value, 16);
+	}
+
+	@Override
+	public Iterator<Nonce> iterator() {
+		return new NonceIterator(this);
+	}
+	
+	private static final class MaxNonce extends Nonce {
+		private MaxNonce() {
+			super(MAX_VALUE);
+		}
+		
+		@Override
+		public boolean isMax() {
+			return true;
+		}
+		
+		@Override
+		public Nonce increment() {
+			return this;
+		}
+		
+		@Override
+		public String toString() {
+			return "7fffffff";
+		}
+	}
+	
+	private static final class NonceIterator implements Iterator<Nonce> {
+		private Nonce nonce;
+		
+		public NonceIterator(Nonce nonce) {
+			this.nonce = nonce;
+		}
+
+		@Override
+		public boolean hasNext() {
+			return !nonce.isMax();
+		}
+
+		@Override
+		public Nonce next() {
+			Nonce next = nonce;
+			nonce = nonce.increment();
+			return next;
+		}
 	}
 }
