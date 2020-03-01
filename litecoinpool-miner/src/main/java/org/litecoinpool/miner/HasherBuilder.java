@@ -1,23 +1,21 @@
 package org.litecoinpool.miner;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.google.common.base.Function;
+import com.google.common.collect.FluentIterable;
+import org.apache.commons.codec.DecoderException;
+import org.stratum.protocol.StratumMessage;
+
+import java.util.List;
+
 import static com.fasterxml.jackson.databind.node.NullNode.getInstance;
 import static com.google.common.collect.Iterables.get;
-import static com.google.common.collect.Iterables.getFirst;
 import static org.apache.commons.codec.binary.Hex.decodeHex;
 import static org.apache.commons.lang3.StringUtils.join;
 import static org.apache.commons.lang3.StringUtils.stripToNull;
 import static org.litecoinpool.miner.BlockHeaderBuilder.aBlockHeader;
 import static org.litecoinpool.miner.Crypto.crypto;
-
-import java.security.NoSuchAlgorithmException;
-import java.util.List;
-
-import org.apache.commons.codec.DecoderException;
-import org.stratum.protocol.StratumMessage;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.google.common.base.Function;
-import com.google.common.collect.FluentIterable;
+import static org.litecoinpool.miner.Hasher.hasher;
 
 public class HasherBuilder {
 	private static final byte[] EMPTY_COINBASE = new byte[]{};
@@ -46,15 +44,13 @@ public class HasherBuilder {
 	}
 	
 	public HasherBuilder from(List<JsonNode> params) {
-		return withJobId(getFirst(params, getInstance()).asText(null))
-			  .withPreviousHash(get(params, 1, getInstance()).asText(null))
+		return withPreviousHash(get(params, 1, getInstance()).asText(null))
 			  .withCoinbase1(get(params, 2, getInstance()).asText(null))
 			  .withCoinbase2(get(params, 3, getInstance()).asText(null))
 			  .withMerkleBranches(toStringArray(get(params, 4, getInstance())))
 			  .withVersion(get(params, 5, getInstance()).asText(null))
 			  .withNbits(get(params, 6, getInstance()).asText(null))
-			  .withNtime(get(params, 7, getInstance()).asText(null))
-			  .withCleanJobs(get(params, 8, getInstance()).asBoolean());
+			  .withNtime(get(params, 7, getInstance()).asText(null));
 	}
 
 	public HasherBuilder withExtranonce1(String extranonce1) {
@@ -64,11 +60,6 @@ public class HasherBuilder {
 
 	public HasherBuilder withExtranonce2(String extranonce2) {
 		this.extranonce2 = extranonce2;
-		return this;
-	}
-
-	public HasherBuilder withJobId(String jobId) {
-		this.jobId = jobId;
 		return this;
 	}
 
@@ -106,24 +97,19 @@ public class HasherBuilder {
 		this.ntime = ntime;
 		return this;
 	}
-	
-	public HasherBuilder withCleanJobs(boolean cleanJobs) {
-		this.cleanJobs = cleanJobs;
-		return this;
-	}
 
-	public Hasher build() throws NoSuchAlgorithmException, DecoderException {
+	public Hasher build() throws DecoderException {
 		byte[] coinbase = coinbase(coinbase1, extranonce1, extranonce2, coinbase2);
 		String merkleRoot = MerkleBranchJoiner.on(coinbase).join(merkleBranches);
-		
+
 		BlockHeaderBuilder blockHeaderBuilder = aBlockHeader()
-			.withVersion(version)
-			.withPreviousHash(previousHash)
-			.withMerkleRoot(merkleRoot)
-			.withNtime(ntime)
-			.withNbits(nbits);
-		
-		return new Hasher(extranonce1, extranonce2, jobId, ntime, blockHeaderBuilder, cleanJobs);
+				.withVersion(version)
+				.withPreviousHash(previousHash)
+				.withMerkleRoot(merkleRoot)
+				.withNtime(ntime)
+				.withNbits(nbits);
+
+		return hasher(extranonce1, extranonce2, ntime, blockHeaderBuilder);
 	}
 	
 	private static byte[] coinbase(String coinbase1, String extranonce1, String extranonce2, String coinbase2) throws DecoderException {

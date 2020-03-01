@@ -1,12 +1,10 @@
 package org.litecoinpool.miner;
 
-import static com.fasterxml.jackson.core.JsonGenerator.Feature.AUTO_CLOSE_TARGET;
-import static io.reactivex.Observable.empty;
-import static io.reactivex.Observable.just;
-import static io.reactivex.Observable.using;
-import static io.reactivex.internal.functions.Functions.emptyConsumer;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.slf4j.LoggerFactory.getLogger;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.reactivex.Flowable;
+import io.reactivex.functions.Function;
+import org.slf4j.Logger;
+import org.stratum.protocol.StratumMessage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,14 +13,13 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.util.concurrent.Callable;
 
-import org.slf4j.Logger;
-import org.stratum.protocol.StratumMessage;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.functions.Function;
+import static com.fasterxml.jackson.core.JsonGenerator.Feature.AUTO_CLOSE_TARGET;
+import static io.reactivex.Flowable.empty;
+import static io.reactivex.Flowable.just;
+import static io.reactivex.Flowable.using;
+import static io.reactivex.internal.functions.Functions.emptyConsumer;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.slf4j.LoggerFactory.getLogger;
 
 public class ObservableSocket {
 	private static final Logger LOGGER = getLogger(ObservableSocket.class);
@@ -65,8 +62,8 @@ public class ObservableSocket {
     	outputStream.write('\n');
     }
     
-    public Observable<StratumMessage> read() {
-    	return using(reader(socket), mapper(), emptyConsumer());
+    public Flowable<StratumMessage> read() {
+		return using(reader(socket), mapper(), emptyConsumer());
 	}
     
     private static Callable<BufferedReader> reader(final Socket socket) {
@@ -78,10 +75,10 @@ public class ObservableSocket {
     	};
 	}
 
-	private static Function<BufferedReader, ObservableSource<StratumMessage>> mapper() {
-		return new Function<BufferedReader,ObservableSource<StratumMessage>>() {
+	private static Function<BufferedReader, Flowable<StratumMessage>> mapper() {
+		return new Function<BufferedReader,Flowable<StratumMessage>>() {
 			@Override
-			public ObservableSource<StratumMessage> apply(BufferedReader reader) throws Exception {
+			public Flowable<StratumMessage> apply(BufferedReader reader) throws Exception {
 				String line = reader.readLine();
 
 				if (isNotBlank(line)) {

@@ -17,6 +17,7 @@ public class TargetMatcher {
 	private static final Logger LOGGER = getLogger(TargetMatcher.class);
 	private static final byte[] BIG_INTEGER_FAKE_SIGN_ARRAY = new byte[] { (byte) 0 };
 	static final BigDecimal MAX_TARGET = new BigDecimal(fromHex("0000ffff00000000000000000000000000000000000000000000000000000000"));
+	static final TargetMatcher DEFAULT_MATCHER = new TargetMatcher(MAX_TARGET);
 	private final BigDecimal target;
 	
 	private TargetMatcher(BigDecimal target) {
@@ -24,6 +25,10 @@ public class TargetMatcher {
 	}
 
 	public static TargetMatcher withDifficulty(String difficulty) {
+		if (difficulty.length() == 17) {
+			return withDifficulty(new BigInteger(difficulty, 17));
+		}
+
 		if (difficulty.length() == 8) {
 			return withDifficulty(fromHex("00000000" + padEnd(difficulty.substring(2), 58, '0')));
 		}

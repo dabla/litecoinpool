@@ -1,28 +1,39 @@
 package org.litecoinpool.miner;
 
-import static org.litecoinpool.miner.Crypto.crypto;
+import org.apache.commons.codec.DecoderException;
 
 import java.security.DigestException;
 
-import org.apache.commons.codec.DecoderException;
+import static org.litecoinpool.miner.Crypto.crypto;
 
 public class Hasher {
+	static final Hasher NO_HASHER = new Hasher() {
+		@Override
+		public byte[] hash(Nonce nonce) throws DigestException {
+			throw new IllegalStateException();
+		}
+	};
+
 	private final String extranonce1;
 	private final String extranonce2;
-	private final String jobId;
 	private final String ntime;
-	private final BlockHeaderBuilder blockHeaderBuilder;
-	private final boolean cleanJobs;
-	
-	Hasher(String extranonce1, String extranonce2, String jobId, String ntime, BlockHeaderBuilder blockHeaderBuilder, boolean cleanJobs) {
+	private final byte[] blockHeader;
+
+	private Hasher() {
+		this(null, null, null, null);
+	}
+
+	private Hasher(String extranonce1, String extranonce2, String ntime, byte[] blockHeader) {
 		this.extranonce1 = extranonce1;
 		this.extranonce2 = extranonce2;
-		this.jobId = jobId;
 		this.ntime = ntime;
-		this.blockHeaderBuilder = blockHeaderBuilder;
-		this.cleanJobs = cleanJobs;
+		this.blockHeader = blockHeader;
 	}
-	
+
+	static Hasher hasher(String extranonce1, String extranonce2, String ntime, BlockHeaderBuilder blockHeaderBuilder) throws DecoderException {
+		return new Hasher(extranonce1, extranonce2, ntime, blockHeaderBuilder.build().getBytes());
+	}
+
 	public String getExtranonce1() {
 		return extranonce1;
 	}
@@ -31,31 +42,19 @@ public class Hasher {
 		return extranonce2;
 	}
 
-	public String getJobId() {
-		return jobId;
-	}
-	
 	public String getNtime() {
 		return ntime;
 	}
 
-	public boolean isCleanJobs() {
-		return cleanJobs;
+	public byte[] hash() {
+		return crypto().scrypt(blockHeader);
 	}
 	
-	public byte[] hash() throws DecoderException {
-		return crypto().scrypt(blockHeaderBuilder.build().getBytes());
-	}
-	
-	public byte[] hash(Nonce nonce) throws DecoderException, DigestException {
+	public byte[] hash(Nonce nonce) throws DigestException {
 		return hash(nonce.getValue());
 	}
 	
-	private byte[] hash(int nonce) throws DecoderException, DigestException {
-		return crypto().scrypt(blockHeaderBuilder.build().getBytes(), nonce); // TODO: maybe pass nonce via blockHeaderBuilder
-	}
-	
-	public byte[] hash(String nonce) throws DecoderException {
-		return crypto().scrypt(blockHeaderBuilder.withNonce(nonce).build().getBytes());
+	private byte[] hash(int nonce) throws DigestException {
+		return crypto().scrypt(blockHeader, nonce); // TODO: maybe pass nonce via blockHeaderBuilder
 	}
 }

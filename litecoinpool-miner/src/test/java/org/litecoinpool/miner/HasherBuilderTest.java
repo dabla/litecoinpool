@@ -1,14 +1,13 @@
 package org.litecoinpool.miner;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.litecoinpool.miner.HasherBuilder.aHasher;
-import static org.stratum.protocol.StratumMessage.SENTINEL;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
 import org.stratum.protocol.StratumMessage;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.litecoinpool.miner.HasherBuilder.aHasher;
+import static org.stratum.protocol.StratumMessage.SENTINEL;
 
 /**
  * 
@@ -30,10 +29,8 @@ public class HasherBuilderTest extends AbstractTest {
 
 		assertThat(actual.getExtranonce1()).isEqualTo(EXTRANONCE1);
 		assertThat(actual.getExtranonce2()).isEqualTo(EXTRANONCE2);
-		assertThat(actual.getJobId()).isEqualTo("b3ba");
 		assertThat(actual.getNtime()).isEqualTo("53178f9b");
-		assertThat(actual.isCleanJobs()).isTrue();
-		
+
 		ByteAsserter.assertThat(actual.hash()).isEqualTo("f6f13e350aa4f251e192ab8a78690ee99f1cc2d930d4ae16c4172a0a8aefddd0");
 	}
 	
@@ -43,10 +40,8 @@ public class HasherBuilderTest extends AbstractTest {
 		
 		assertThat(actual.getExtranonce1()).isNull();
 		assertThat(actual.getExtranonce2()).isNull();
-		assertThat(actual.getJobId()).isNull();
 		assertThat(actual.getNtime()).isNull();
-		assertThat(actual.isCleanJobs()).isFalse();
-		
+
 		actual.hash();
 	}
 }
