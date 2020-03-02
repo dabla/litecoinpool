@@ -23,6 +23,7 @@ import static com.google.common.collect.Iterables.get;
 import static com.google.common.collect.Iterables.getFirst;
 import static io.reactivex.Flowable.fromIterable;
 import static io.reactivex.schedulers.Schedulers.computation;
+import static java.util.Arrays.asList;
 import static org.apache.commons.codec.binary.Hex.encodeHexString;
 import static org.litecoinpool.miner.HasherBuilder.aHasher;
 import static org.litecoinpool.miner.Job.NO_JOB;
@@ -64,9 +65,7 @@ public class Client {
 	}
 
 	public void listen() throws IOException {
-		for (Nonce nonce : max().partition(8)) {
-            jobs.flatMap(hash(nonce)).map(submit()).subscribe();
-        }
+		jobs.flatMap(hash()).map(submit()).subscribe();
 
 		socket.read()
 				.takeWhile(isConnected())
@@ -164,13 +163,15 @@ public class Client {
 		};
 	}
 
-	private static Function<Job,Flowable<StratumMessageBuilder>> hash(final Nonce nonce) {
+	private static Function<Job,Flowable<StratumMessageBuilder>> hash() {
 		return new Function<Job,Flowable<StratumMessageBuilder>>() {
 			@Override
 			public Flowable<StratumMessageBuilder> apply(Job job) throws Exception {
-				return fromIterable(nonce)
+
+				return fromIterable(asList(max().partition(8)))
 						.parallel()
 						.runOn(computation())
+						.flatMap(nonce())
 						.flatMap(new Function<Nonce, Publisher<StratumMessageBuilder>>() {
 							@Override
 							public Publisher<StratumMessageBuilder> apply(Nonce nonce) throws Exception {
@@ -181,6 +182,16 @@ public class Client {
 										.map(submit(job, nonce));
 							}
 						}).sequential();
+			}
+		};
+	}
+
+	private static Function<Nonce, Publisher<Nonce>> nonce() {
+		return new Function<Nonce, Publisher<Nonce>>() {
+			@Override
+			public Publisher<Nonce> apply(Nonce nonce) throws Exception {
+				LOGGER.info("Started nonce {}", nonce);
+				return fromIterable(nonce);
 			}
 		};
 	}
