@@ -157,6 +157,7 @@ public class Client {
 						.withExtranonce2(extranonce2)
 						.build();
 				Job job = job(jobId, matcher, hasher);
+				LOGGER.info("Started hashing jobId {}", job.getJobId());
 				currentJobs.put(jobId, job);
 				return job;
 			}
@@ -167,8 +168,6 @@ public class Client {
 		return new Function<Job,Flowable<StratumMessageBuilder>>() {
 			@Override
 			public Flowable<StratumMessageBuilder> apply(Job job) throws Exception {
-				LOGGER.info("Started hashing jobId {}", job.getJobId());
-
 				return fromIterable(nonce)
 						.parallel()
 						.runOn(computation())
@@ -191,7 +190,7 @@ public class Client {
 			@Override
 			public byte[] apply(Nonce nonce) throws Exception {
 				if (nonce.getValue() % 10000 == 0) {
-					LOGGER.info("Still hashing jobId {} for nonce {} of {}", job.getJobId(), nonce, max());
+					LOGGER.info("Still hashing jobId {} for nonce {} of {}", job.getJobId(), nonce, nonce.getMax());
 				}
 
 				return job.hash(nonce);
@@ -203,8 +202,6 @@ public class Client {
 		return new Predicate<byte[]>() {
 			@Override
 			public boolean test(byte[] hash) throws Exception {
-				LOGGER.info("hashing... {}", encodeHexString(hash));
-
 				return job.matches(hash) || nonce.isMax();
 			}
 		};

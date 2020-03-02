@@ -33,11 +33,15 @@ public class Nonce implements Iterable<Nonce> {
 	public static Nonce nonce(byte value[]) {
 		return nonce(reverseHex(encodeHexString(copyOfRange(value, 76, 79))));
 	}
-	
+
 	public static Nonce nonce(int value) {
+		return nonce(value, MAX_VALUE);
+	}
+	
+	public static Nonce nonce(int value, int max) {
 		if (value == 0) return MIN;
 		if (value >= MAX_VALUE) return MAX;
-		return new Nonce(value);
+		return new Nonce(value, max);
 	}
 	
 	public static Nonce min() {
@@ -60,13 +64,17 @@ public class Nonce implements Iterable<Nonce> {
 	public int getValue() {
 		return value;
 	}
-	
+
+	public int getMax() {
+		return max;
+	}
+
 	public boolean isMax() {
-		return false;
+		return value >= max;
 	}
 	
 	public Nonce increment() {
-		return nonce(value + 1);
+		return nonce(value + 1, max);
 	}
 
 	@Override
