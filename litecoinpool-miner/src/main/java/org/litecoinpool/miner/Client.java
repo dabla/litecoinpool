@@ -23,6 +23,7 @@ import static com.google.common.collect.Iterables.get;
 import static com.google.common.collect.Iterables.getFirst;
 import static io.reactivex.Flowable.fromIterable;
 import static io.reactivex.schedulers.Schedulers.computation;
+import static org.apache.commons.codec.binary.Hex.encodeHexString;
 import static org.litecoinpool.miner.HasherBuilder.aHasher;
 import static org.litecoinpool.miner.Job.NO_JOB;
 import static org.litecoinpool.miner.Job.job;
@@ -63,7 +64,9 @@ public class Client {
 	}
 
 	public void listen() throws IOException {
-		jobs.flatMap(hash(matcher)).map(submit()).subscribe();
+		for (Nonce nonce : max().partition(8)) {
+            jobs.flatMap(hash(nonce)).map(submit()).subscribe();
+        }
 
 		socket.read()
 				.takeWhile(isConnected())
@@ -160,13 +163,13 @@ public class Client {
 		};
 	}
 
-	private static Function<Job,Flowable<StratumMessageBuilder>> hash(final TargetMatcher matcher) {
+	private static Function<Job,Flowable<StratumMessageBuilder>> hash(final Nonce nonce) {
 		return new Function<Job,Flowable<StratumMessageBuilder>>() {
 			@Override
 			public Flowable<StratumMessageBuilder> apply(Job job) throws Exception {
 				LOGGER.info("Started hashing jobId {}", job.getJobId());
 
-				return fromIterable(min())
+				return fromIterable(nonce)
 						.parallel()
 						.runOn(computation())
 						.flatMap(new Function<Nonce, Publisher<StratumMessageBuilder>>() {
@@ -200,7 +203,7 @@ public class Client {
 		return new Predicate<byte[]>() {
 			@Override
 			public boolean test(byte[] hash) throws Exception {
-				//LOGGER.info("hashing... {}", encodeHexString(hash));
+				LOGGER.info("hashing... {}", encodeHexString(hash));
 
 				return job.matches(hash) || nonce.isMax();
 			}

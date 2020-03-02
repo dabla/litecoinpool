@@ -1,22 +1,29 @@
 package org.litecoinpool.miner;
 
+import java.math.BigInteger;
+import java.util.Iterator;
+import java.util.Objects;
+
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.parseInt;
 import static java.util.Arrays.copyOfRange;
 import static org.apache.commons.codec.binary.Hex.encodeHexString;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
-import java.math.BigInteger;
-import java.util.Iterator;
-
 public class Nonce implements Iterable<Nonce> {
 	private static final Nonce MIN = new Nonce(0);
 	private static final Nonce MAX = new MaxNonce();
 	
 	private final int value;
-	
+	private final int max;
+
 	private Nonce(int value) {
+		this(value, MAX_VALUE);
+	}
+	
+	private Nonce(int value, int max) {
 		this.value = value;
+		this.max = max;
 	}
 	
 	public static Nonce nonce(String value) {
@@ -28,19 +35,26 @@ public class Nonce implements Iterable<Nonce> {
 	}
 	
 	public static Nonce nonce(int value) {
-		switch(value) {
-			case 0 : 		 return MIN;
-			case MAX_VALUE : return MAX;
-			default : 		 return new Nonce(value);
-		}
+		if (value == 0) return MIN;
+		if (value >= MAX_VALUE) return MAX;
+		return new Nonce(value);
 	}
 	
 	public static Nonce min() {
 		return MIN;
 	}
-	
+
 	public static Nonce max() {
 		return MAX;
+	}
+
+	public Nonce[] partition(int number) {
+		int quotient  = MAX_VALUE / number;
+		Nonce[] nonces = new Nonce[number];
+		for (int index = 0; index < number; index++) {
+			nonces[index] = new Nonce((index * quotient) + (index * 1), (index + 1) * quotient + (index * 1));
+		}
+		return nonces;
 	}
 	
 	public int getValue() {
@@ -54,7 +68,20 @@ public class Nonce implements Iterable<Nonce> {
 	public Nonce increment() {
 		return nonce(value + 1);
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Nonce nonce = (Nonce) o;
+		return value == nonce.value;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(value);
+	}
+
 	@Override
 	public String toString() {
 		return intToHexString(value);
@@ -101,7 +128,7 @@ public class Nonce implements Iterable<Nonce> {
 	
 	private static final class MaxNonce extends Nonce {
 		private MaxNonce() {
-			super(MAX_VALUE);
+			super(MAX_VALUE, MAX_VALUE);
 		}
 		
 		@Override
@@ -119,11 +146,11 @@ public class Nonce implements Iterable<Nonce> {
 			return "7fffffff";
 		}
 	}
-	
-	private static final class NonceIterator implements Iterator<Nonce> {
+
+	private class NonceIterator implements Iterator<Nonce> {
 		private Nonce nonce;
-		
-		public NonceIterator(Nonce nonce) {
+
+		private NonceIterator(Nonce nonce) {
 			this.nonce = nonce;
 		}
 

@@ -7,9 +7,11 @@ import org.apache.commons.codec.DecoderException;
 import org.stratum.protocol.StratumMessage;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static com.fasterxml.jackson.databind.node.NullNode.getInstance;
 import static com.google.common.collect.Iterables.get;
+import static java.util.stream.Stream.of;
 import static org.apache.commons.codec.binary.Hex.decodeHex;
 import static org.apache.commons.lang3.StringUtils.join;
 import static org.apache.commons.lang3.StringUtils.stripToNull;
@@ -124,9 +126,7 @@ public class HasherBuilder {
 	
 	private static String[] toStringArray(JsonNode jsonNode) {
 		if (jsonNode.isArray()) {
-			return FluentIterable.from(jsonNode)
-								 .transform(asString())
-								 .toArray(String.class);
+			return of(jsonNode).map(asString()).toArray(String[]::new);
 		}
 		
 		return EMPTY_MERKLE_BRANCHES;
