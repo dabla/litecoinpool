@@ -25,10 +25,6 @@ public class TargetMatcher {
 	}
 
 	public static TargetMatcher withDifficulty(String difficulty) {
-		if (difficulty.length() == 17) {
-			return withDifficulty(new BigInteger(difficulty, 17));
-		}
-
 		if (difficulty.length() == 8) {
 			return withDifficulty(fromHex("00000000" + padEnd(difficulty.substring(2), 58, '0')));
 		}

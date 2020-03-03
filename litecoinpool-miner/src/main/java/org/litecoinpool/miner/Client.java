@@ -6,15 +6,18 @@ import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import io.reactivex.processors.FlowableProcessor;
 import io.reactivex.processors.PublishProcessor;
+import io.reactivex.schedulers.Schedulers;
 import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.stratum.protocol.StratumMessage;
 import org.stratum.protocol.StratumMessageBuilder;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static com.fasterxml.jackson.core.JsonGenerator.Feature.AUTO_CLOSE_TARGET;
@@ -105,7 +108,7 @@ public class Client {
 							String method = message.getResult().get(0).get(index).get(0).asText();
 							if ("mining.set_difficulty".equals(method)) {
 								String difficulty = message.getResult().get(0).get(index).get(1).asText();
-								matcher = withDifficulty(difficulty);
+								matcher = withDifficulty(new BigInteger(difficulty.substring(difficulty.length() - 1)));
 							}
 							else if ("mining.notify".equals(method)) {
 
@@ -170,7 +173,7 @@ public class Client {
 
 				return fromIterable(asList(max().partition(8)))
 						.parallel()
-						.runOn(computation())
+						.runOn(Schedulers.from(Executors.newFixedThreadPool(8)))
 						.flatMap(nonce())
 						.flatMap(new Function<Nonce, Publisher<StratumMessageBuilder>>() {
 							@Override
