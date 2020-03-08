@@ -16,11 +16,11 @@ import static org.apache.commons.codec.binary.Hex.decodeHex;
 import static org.apache.commons.lang3.StringUtils.join;
 import static org.apache.commons.lang3.StringUtils.stripToNull;
 import static org.litecoinpool.miner.BlockHeaderBuilder.aBlockHeader;
+import static org.litecoinpool.miner.CoinbaseBuilder.aCoinbase;
 import static org.litecoinpool.miner.Crypto.crypto;
 import static org.litecoinpool.miner.Hasher.hasher;
 
 public class HasherBuilder {
-	private static final byte[] EMPTY_COINBASE = new byte[]{};
 	private static final String[] EMPTY_MERKLE_BRANCHES = new String[]{};
 	
 	private String extranonce1;
@@ -115,13 +115,12 @@ public class HasherBuilder {
 	}
 	
 	private static byte[] coinbase(String coinbase1, String extranonce1, String extranonce2, String coinbase2) throws DecoderException {
-		String coinbase = stripToNull(join(coinbase1, extranonce1, extranonce2, coinbase2));
-		
-		if (coinbase != null) {
-			return crypto().dsha256(decodeHex(coinbase));
-		}
-		
-		return EMPTY_COINBASE;
+		return aCoinbase()
+				.withCoinbase1(coinbase1)
+				.withExtranonce1(extranonce1)
+				.withExtranonce2(extranonce2)
+				.withCoinbase2(coinbase2)
+				.build();
 	}
 	
 	private static String[] toStringArray(JsonNode jsonNode) {
