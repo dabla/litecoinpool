@@ -25,7 +25,6 @@ public class HasherBuilder {
 	
 	private String extranonce1;
 	private String extranonce2;
-	private String jobId;
 	private String previousHash;
 	private String coinbase1;
 	private String coinbase2;
@@ -33,7 +32,6 @@ public class HasherBuilder {
 	private String version;
 	private String nbits;
 	private String ntime;
-	private boolean cleanJobs = false;
 
 	private HasherBuilder() {}
 	
@@ -125,7 +123,11 @@ public class HasherBuilder {
 	
 	private static String[] toStringArray(JsonNode jsonNode) {
 		if (jsonNode.isArray()) {
-			return of(jsonNode).map(asString()).toArray(String[]::new);
+			String[] array = new String[jsonNode.size()];
+			for (int index = 0; index < jsonNode.size(); index++) {
+				array[index] = jsonNode.get(index).asText(null);
+			}
+			return array;
 		}
 		
 		return EMPTY_MERKLE_BRANCHES;

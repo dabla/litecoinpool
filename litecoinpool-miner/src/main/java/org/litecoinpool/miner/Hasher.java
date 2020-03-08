@@ -34,16 +34,20 @@ public class Hasher {
 		return new Hasher(extranonce1, extranonce2, ntime, blockHeaderBuilder.build().getBytes());
 	}
 
-	public String getExtranonce1() {
+	String getExtranonce1() {
 		return extranonce1;
 	}
 
-	public String getExtranonce2() {
+	String getExtranonce2() {
 		return extranonce2;
 	}
 
-	public String getNtime() {
+	String getNtime() {
 		return ntime;
+	}
+
+	byte[] getBlockHeader() {
+		return blockHeader;
 	}
 
 	public byte[] hash() {
